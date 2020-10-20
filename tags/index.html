@@ -5,10 +5,6 @@
   <!-- SEO相关 -->
   
     
-      
-        <meta name="robots" content="index,follow">
-      
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -23,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>羊窝</title>
+  <title>按标签查看文章 - 羊站</title>
   
 
   
@@ -67,7 +63,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -84,9 +80,9 @@
         
         <a class="title flat-box" target="_self" href='/'>
           
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/n1vk/img@1.33/logo/sheep_new.png'/>
           
           
-            羊窝
           
         </a>
       
@@ -286,49 +282,59 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper tag search' style="display: none;">
           
-            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/n1vk/img@v1.2/background/background4.png"></div>
           
           <div class='cover-body'>
   <div class='top'>
     
     
-      <p class="title">Nivek 的 Blog</p>
+      <p class="title">Nivek 的小站</p>
     
+    
+      <p class="subtitle">技术 · 想法</p>
     
   </div>
   <div class='bottom'>
+    
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <input type="text" class="input u-search-input" placeholder="对什么感兴趣？" />
+          <i class="icon fas fa-search fa-fw"></i>
+        </form>
+      </div>
+    
     <div class='menu navigation'>
       <div class='list-h'>
         
           
-            <a href="/catagories/"
+            <a href="/categories/"
               
               
-              id="catagories">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>分类</p>
+              id="categories">
+              <p>分类</p>
             </a>
           
             <a href="/tags/"
               
               
               id="tags">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>标签</p>
+              <p>标签</p>
             </a>
           
             <a href="/archives/"
               
               
               id="archives">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>归档</p>
+              <p>归档</p>
             </a>
           
             <a href="/about/"
               
               
               id="about">
-              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f9ec.svg'><p>关于</p>
+              <p>关于</p>
             </a>
           
         
@@ -347,116 +353,9 @@
       <div class='body-wrapper' id="pjax-container">
         
 
+
 <div class='l_main'>
   
-  <section class="post-list">
-    
-      
-        
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/18/Test/">
-        这是一篇测试性的文章
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      在这篇文章里，我将会尝试使用 Markdown 来写作。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://avatars2.githubusercontent.com/u/73031052?s=400&u=7de3a10cba21662e60d158398bf9a8c3ed1d3e82&v=4'></a>
-        
-        <time>2020-10-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/18/Test/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2020/10/18/hello-world/">
-        Hello World
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      Welcome to Hexo! This is your very first post.
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://avatars2.githubusercontent.com/u/73031052?s=400&u=7de3a10cba21662e60d158398bf9a8c3ed1d3e82&v=4'></a>
-        
-        <time>2020-10-18</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2020/10/18/hello-world/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
-
-
 </div>
 <aside class='l_side'>
   
@@ -464,92 +363,13 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://avatars2.githubusercontent.com/u/73031052?s=400&u=7de3a10cba21662e60d158398bf9a8c3ed1d3e82&v=4'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>Nivek</h2>
-        
-        
-          <p>在读本科生，通信工程专业</p>
-
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-        
-          
-            <a href="/vallhalla@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/n1vk/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
 
 
-    <div class='content'>
-      <a href="/tags/%E9%9A%8F%E6%83%B3/" style="font-size: 14px; color: #999">随想</a>
-    </div>
-  </section>
-
-
-  
 
   
 
 
 </aside>
-
 
 
         
@@ -566,7 +386,7 @@
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
@@ -618,7 +438,7 @@
     
       
         <div class='copyright'>
-        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+        <p><a href="/">Copyright © 2017-2020 Nivek Blog</a></p>
 
         </div>
       
