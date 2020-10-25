@@ -363,6 +363,12 @@
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://cdn.jsdelivr.net/gh/n1vk/img@v1.42/headimg/verilog.png'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
@@ -430,7 +436,7 @@
   <p>每当我回想起电路分析实验与模拟电路实验开课的那段时光，总不能忘记的是让电脑轰鸣发热的 VMware Fusion。即使是最简单的模拟电路仿真，也需要像 Multisim 这样功能无比强大的仿真软件。这样一个拥有庞大数据体量的软件只支持 Windows 似乎也是情理之中的。  </p>
 <p>但对于Verilog HDL这样的硬件描述语言，<strong>如果只是简单的电路</strong>，我们就不再需要动辄十几兆字节的 Vivado 或者 Quartus，配置好编译软件和波形查看软件，我们就可以愉快的进行练习了。  </p>
 <hr>
-<h1 id="包管理器-Homebrew"><a href="#包管理器-Homebrew" class="headerlink" title="包管理器 Homebrew"></a>包管理器 Homebrew</h1><h1 id="代码编辑器-VSCode"><a href="#代码编辑器-VSCode" class="headerlink" title="代码编辑器 VSCode"></a>代码编辑器 VSCode</h1><h1 id="编译软件-Icarus-Verilog"><a href="#编译软件-Icarus-Verilog" class="headerlink" title="编译软件 Icarus Verilog"></a>编译软件 Icarus Verilog</h1><h1 id="仿真波形软件-Scansion"><a href="#仿真波形软件-Scansion" class="headerlink" title="仿真波形软件 Scansion"></a>仿真波形软件 Scansion</h1><h1 id="编写与编译-Verilog-文件"><a href="#编写与编译-Verilog-文件" class="headerlink" title="编写与编译 Verilog 文件"></a>编写与编译 Verilog 文件</h1><h1 id="编写-Testbench-文件"><a href="#编写-Testbench-文件" class="headerlink" title="编写 Testbench 文件"></a>编写 Testbench 文件</h1>
+<h2 id="包管理器-Homebrew"><a href="#包管理器-Homebrew" class="headerlink" title="包管理器 Homebrew"></a>包管理器 Homebrew</h2><h2 id="代码编辑器-VSCode"><a href="#代码编辑器-VSCode" class="headerlink" title="代码编辑器 VSCode"></a>代码编辑器 VSCode</h2><h2 id="编译软件-Icarus-Verilog"><a href="#编译软件-Icarus-Verilog" class="headerlink" title="编译软件 Icarus Verilog"></a>编译软件 Icarus Verilog</h2><h2 id="仿真波形软件-Scansion"><a href="#仿真波形软件-Scansion" class="headerlink" title="仿真波形软件 Scansion"></a>仿真波形软件 Scansion</h2><h2 id="编写与编译-Verilog-文件"><a href="#编写与编译-Verilog-文件" class="headerlink" title="编写与编译 Verilog 文件"></a>编写与编译 Verilog 文件</h2><h2 id="编写-Testbench-文件"><a href="#编写-Testbench-文件" class="headerlink" title="编写 Testbench 文件"></a>编写 Testbench 文件</h2>
   
   
     
@@ -464,10 +470,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-20T21:12:40+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-25T23:46:48+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年10月20日</p>
+    <p>更新于：2020年10月25日</p>
   </a>
 </div>
 
@@ -517,7 +523,7 @@
         <a class='next' href='/%E6%95%99%E7%A8%8B/build-your-own-blog-pt1/'>
           <p class='title'>亲手搭建自己的博客网站，从无到无穷 (Part 1)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>感谢你阅读这行文字！  
-因为这正代表着我的网页搭建成功，工作正常。而这距离一个仅有着 Hello world! 的空白网页只不到三天时间。如果你也有兴趣创建一个属于你自己的网站，那么这篇文章会...</p>
+因为这正代表着我的网页搭建成功，工作正常，甚至还有些好看。而这距离一个仅有着 404 的空白页面只不到三天时间。如果你也有兴趣创建一个属于你自己的网站，那么这篇文章会以...</p>
         </a>
       
     </div>
@@ -560,7 +566,7 @@
 
 
     <div class='content'>
-        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8-Homebrew"><span class="toc-text">包管理器 Homebrew</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8-VSCode"><span class="toc-text">代码编辑器 VSCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%BD%AF%E4%BB%B6-Icarus-Verilog"><span class="toc-text">编译软件 Icarus Verilog</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F%E6%B3%A2%E5%BD%A2%E8%BD%AF%E4%BB%B6-Scansion"><span class="toc-text">仿真波形软件 Scansion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E4%B8%8E%E7%BC%96%E8%AF%91-Verilog-%E6%96%87%E4%BB%B6"><span class="toc-text">编写与编译 Verilog 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99-Testbench-%E6%96%87%E4%BB%B6"><span class="toc-text">编写 Testbench 文件</span></a></li></ol>
     </div>
   </section>
 
