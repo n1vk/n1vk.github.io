@@ -438,7 +438,7 @@
 <p><strong><em>(推荐在使用之前在 App Store 安装 Xcode 以免缺失依赖)</em></strong></p>
 <hr>
 <h2 id="包管理器-Homebrew"><a href="#包管理器-Homebrew" class="headerlink" title="包管理器 Homebrew"></a>包管理器 Homebrew</h2><p>首先之首先，我们需要 macOS 上必备的包管理器 Homebrew。</p>
-<p>我曾经在<a target="_blank" rel="noopener" href="https://sheepo.top/%E6%95%99%E7%A8%8B/build-your-own-blog-pt1/">如何搭建自己的博客(Part1)</a>里提过一句 Homebrew，而这里我想我可以展开说说。<br>如果你曾用过 Linux，你会明白 Homebrew 只是热心开发者为了弥补 macOS 作为类Unix系统而没有包管理器的遗憾而诞生的产物，它的名字“家酿”可能也在暗示它的民间出身而非官方应用/而如果你只是普通用户，你可以将 Homebrew 认为是命令行版本的 App Store。通过 Homebrew 你可以安装许多软件，只需要输入一行命令并坐和放宽。</p>
+<p>我曾经在<a target="_blank" rel="noopener" href="https://sheepo.top/%E6%95%99%E7%A8%8B/build-your-own-blog-pt1/">如何搭建自己的博客(Part1)</a>里提过一句 Homebrew，而这里我想我可以展开说说。<br>如果你曾用过 Linux，你会明白 Homebrew 只是热心开发者为了弥补 macOS 作为类Unix系统而没有包管理器的遗憾而诞生的产物，它的名字“家酿”可能也在暗示它的民间出身而非官方应用。<br>而如果你只是普通用户，你可以将 Homebrew 认为是命令行版本的 App Store。通过 Homebrew 你可以安装许多软件，只需要输入一行命令并坐和放宽。</p>
 <p>举个例子，Python 是 macOS 自带的应用，但默认是 2.7 版本（至少我拿到的 Mojave 是这样的）。如果想要安装 Python3，只需要在命令行输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">→ brew install Python</span><br></pre></td></tr></table></figure>
 
@@ -449,7 +449,7 @@
 <p>这就结束了对 Homebrew 的说明。</p>
 <h2 id="编译软件-Icarus-Verilog"><a href="#编译软件-Icarus-Verilog" class="headerlink" title="编译软件 Icarus Verilog"></a>编译软件 Icarus Verilog</h2><p>哇，这可是个什么东西？<br>赶紧打开官网查看一下。</p>
 <blockquote>
-<p>伊卡洛斯Verilog是一款 Verilog 模拟综合工具。它作为编译软件工作，将以 Verilog (IEEE-1364) 代码编写的源码编译为某种目标格式。<br>对于批量模拟，它可以生成一种叫做 “vvp 程序集” 的中间级形式。这个程序集可以用 “vvp” 指令执行。<br>对于综合，该编译器可以依照需要的风格生成网表。</p>
+<p><em>伊卡洛斯Verilog</em>是一款 Verilog 模拟综合工具。它作为编译软件工作，将以 Verilog (IEEE-1364) 代码编写的源码编译为某种目标格式。<br>对于批量模拟，它可以生成一种叫做 “vvp 程序集” 的中间级形式。这个程序集可以用 “vvp” 指令执行。<br>对于综合，该编译器可以依照需要的风格生成网表。</p>
 <p>(翻译自 Icarus Verilog 官网)</p>
 </blockquote>
 <p>你可以看出，iverilog 可以将许多 .v 源文件编译成一个某类型的可执行文件，再使用 vvp 命令执行它。<br>它可以输出波形，甚至可以生成门级电路网表（关于生成 Netlist，我仍在研究），并且它是一个可以运行在 macOS 上的开源软件。</p>
@@ -461,7 +461,7 @@
 <p>下载完成后，点击左边的拓展页面搜索 Verilog，按图安装插件。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://cdn.jsdelivr.net/gh/n1vk/img@v1.5/inpassage/verilog/1.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/n1vk/img@v1.5/inpassage/verilog/1.png" srcset="data:image/png;base64,666" alt="和红框内名字相同"></div><span class="image-caption">和红框内名字相同</span></div>
 <p>这个插件将对你的代码实现语法高亮，纠错等等。</p>
-<p>安装好后，按下<kbd>⌘</kbd> + <kbd>,</kbd>打开 VSCode 的配置页面，搜索 Verilog，将 Verilog 的 Linter 更改为 iverilog。这样在编写代码的时候可以看出自己的语法错误，对于初学者来说比较方便。</p>
+<p>安装好后，按下<kbd>⌘</kbd> + <kbd> , </kbd>打开 VSCode 的配置页面，搜索 Verilog，将 Verilog 的 Linter 更改为 iverilog。这样在编写代码的时候可以看出自己的语法错误，对于初学者来说比较方便。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://cdn.jsdelivr.net/gh/n1vk/img@v1.5/inpassage/verilog/2.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/n1vk/img@v1.5/inpassage/verilog/2.png" srcset="data:image/png;base64,666" alt="如图红框所示选项"></div><span class="image-caption">如图红框所示选项</span></div>
 <p><strong>但注意这个 Linter 的工作有些异常，在多文件编译的时候它将会提示你无法找到另外一个文件内的 module，但编译仍可以正常进行。此时，请无视报错</strong></p>
 <p><em>VSCode 不是强制性的。如果你更喜欢自己的文本编译器，更换是没有问题的。</em><br>这就结束了对VSCode的说明。</p>
@@ -495,7 +495,7 @@
 <p>就可以得到仿真波形了！随意选择一列验证，你会发现这就是全加器的输出波形。</p>
 <p>由此，其他的 Verilog 仿真也就可以按照这种方式进行啦。这篇关于 macOS 上 Verilog 设计的文章也就到这里了。</p>
 <hr>
-<p><em>在写这篇文章的时候，我注意到了Icarus Verilog具有生成网表的功能。等我研究出了如何生成门级网表，我会回来更新这篇文章。</em></p>
+<p><em>在写这篇文章的时候，我注意到了Icarus Verilog具有生成网表的功能。但这似乎是基于所谓RTL级描述的内容。</em><br><em>等我对数字系统的理解更加深入之后，我也许会更新这篇文章。欢迎所有读者勘误！</em></p>
 
   
   
@@ -530,7 +530,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T20:32:30+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T21:41:58+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年10月26日</p>
