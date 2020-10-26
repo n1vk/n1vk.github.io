@@ -489,7 +489,7 @@
 
 <p>再通过 npm （即 Node Package Manager）安装 Hexo。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">→ npm install hexo-cli -g</span><br><span class="line">→ hexo init folder_name</span><br><span class="line">→ <span class="built_in">cd</span> folder_name</span><br><span class="line">→ npm install</span><br><span class="line">→ hexo s</span><br></pre></td></tr></table></figure>
-<p>这一套组合拳下来，你将会在目录内得到一个 folder_name 文件夹，并且 Hexo 已经将博客部署在 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 了。<br>如果你想要停止部署，请在终端界面按下<kbd> ^ </kbd>+<kbd>C</kbd>。</p>
+<p>这一套组合拳下来，你将会在目录内得到一个 folder_name 文件夹，并且 Hexo 已经将博客部署在 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 了。<br>如果你想要停止部署，请在终端界面按下<kbd>⌃</kbd> + <kbd>C</kbd>。</p>
 <h3 id="如何使用-Hexo-管理我的-Github-Repository-？"><a href="#如何使用-Hexo-管理我的-Github-Repository-？" class="headerlink" title="如何使用 Hexo 管理我的 Github Repository ？"></a>如何使用 Hexo 管理我的 Github Repository ？</h3><p>刚刚的操作，Hexo 只是在本地生成了网站。我们如何用 Hexo 将网站 push 到 Github 呢？<br>我们当然也可以选择之前的 Git，但 Hexo 为我们提供了更方便的服务。</p>
 <p>打开刚刚创建的 folder_name 文件夹，在 _config.yml （是 Hexo 的配置文件，我们以后会经常使用它）中添加下面的配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repository: https:&#x2F;&#x2F;github.com&#x2F;your_id&#x2F;your_id.github.io.git</span><br><span class="line">    branch: main</span><br></pre></td></tr></table></figure>
@@ -536,7 +536,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T14:38:53+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T20:31:27+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年10月26日</p>
@@ -586,7 +586,7 @@
     <div class="prev-next">
       
         <a class='prev' href='/%E6%95%99%E7%A8%8B/verilog-design-on-macos/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>在macOS上进行Verilog HDL仿真</p>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>在macOS上进行Verilog HDL设计</p>
           <p class='content'>每当我回想起电路分析实验与模拟电路实验开课的那段时光，总不能忘记的是让电脑轰鸣发热的 VMware Fusion。即使是最简单的模拟电路仿真，也需要像 Multisim 这样功能无比强大的仿真软...</p>
         </a>
       
