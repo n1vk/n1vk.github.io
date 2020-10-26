@@ -465,8 +465,9 @@
 <p>这个插件将对你的代码实现语法高亮，纠错等等。</p>
 <p>安装好后，按下<kbd>⌘</kbd> + <kbd> , </kbd>打开 VSCode 的配置页面，搜索 Verilog，将 Verilog 的 Linter 更改为 iverilog。这样在编写代码的时候可以看出自己的语法错误，对于初学者来说比较方便。</p>
 <div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://cdn.jsdelivr.net/gh/n1vk/img@v1.5/inpassage/verilog/2.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/n1vk/img@v1.5/inpassage/verilog/2.png" srcset="data:image/png;base64,666" alt="如图红框所示选项"></div><span class="image-caption">如图红框所示选项</span></div>
-<p><strong>但注意这个 Linter 的工作有些异常，在多文件编译的时候它将会提示你无法找到另外一个文件内的 module，但编译仍可以正常进行。此时，请无视报错</strong></p>
-<p><em>VSCode 不是强制性的。如果你更喜欢自己的文本编译器，更换是没有问题的。</em><br>这就结束了对VSCode的说明。</p>
+<p><strong>但注意这个 Linter 的工作有异常，在多文件编译的时候它将会提示你无法找到另外一个文件内的 module，但编译仍可以正常进行。此时，请无视报错。</strong></p>
+<p><em>VSCode 不是强制性的。如果你更喜欢自己的文本编译器，更换是没有问题的。</em></p>
+<p>这就结束了对VSCode的说明。</p>
 <h2 id="仿真波形软件-Scansion"><a href="#仿真波形软件-Scansion" class="headerlink" title="仿真波形软件 Scansion"></a>仿真波形软件 Scansion</h2><p>Scansion 的软件说明非常有意思：</p>
 <blockquote>
 <p>Scansion 为广大疲惫于每次分析波形时都要打开 Linux 虚拟机或者用 X11 做出来的应用的那些 Mac 用户带来一丝解脱。</p>
@@ -480,7 +481,7 @@
 <p>并按下<kbd>⌘</kbd> + <kbd>S</kbd>保存文件。</p>
 <p>按下<kbd>⌃</kbd> + <kbd> ` </kbd>打开终端，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">→ <span class="built_in">cd</span> Full_Adder/</span><br><span class="line">→ iverilog iverilog -o Full_Adder.out Full_Adder.v</span><br></pre></td></tr></table></figure>
-<p>你会发现文件夹里多出了一个 Full_Adder.out 文件（ -o 参数声明了输出文件的名字）。还记得我们之前提到的中间文件吗？就是它！<br>我们激动的运行：</p>
+<p>你会发现文件夹里多出了一个 Full_Adder.out 文件（参数 -o 后面声明了输出文件的名字）。还记得我们之前提到的中间文件吗？就是它！<br>我们激动的运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">→ vvp Full_Adder.out</span><br></pre></td></tr></table></figure>
 
 <p>……这行命令就像鲤鱼王的水溅跃，使用过后什么也没有发生。<br>问题出在哪里呢？我们观察我们所写的文件，它只是对一个 module 进行了描述。而要观察它将对输入做出什么样的响应，我们需要再编写一个 Testbench 文件，声明对他的输入并输出响应的波形。</p>
@@ -532,7 +533,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T21:41:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-10-26T21:56:18+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年10月26日</p>
