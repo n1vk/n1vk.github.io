@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>亲手搭建自己的博客网站，从无到无穷 (Part 2)</title>
+      <link href="%E6%95%99%E7%A8%8B/build-your-own-blog-pt2/"/>
+      <url>%E6%95%99%E7%A8%8B/build-your-own-blog-pt2/</url>
+      
+        <content type="html"><![CDATA[<p>笑死，里面啥也没写。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网站 </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> GithubPages </tag>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在macOS上进行Verilog HDL设计</title>
       <link href="%E6%95%99%E7%A8%8B/verilog-design-on-macos/"/>
       <url>%E6%95%99%E7%A8%8B/verilog-design-on-macos/</url>
