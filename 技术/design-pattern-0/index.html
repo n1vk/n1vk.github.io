@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.2.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://n1vk.github.io/tags/糊弄/"/>
+  
+  <link rel="canonical" href="https://n1vk.github.io/技术/design-pattern-0/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,28 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1648469834676" as="style">
+  <link rel="preload" href="/css/style.css?time=1648483191253" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>标签：糊弄 - Sheep's Blog</title>
-  <meta name="keywords" content="null">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sheep&#39;s Blog">
-<meta property="og:url" content="https://n1vk.github.io/tags/%E7%B3%8A%E5%BC%84/index.html">
+  <title>设计模式：基本思想与策略模式 - Sheep's Blog</title>
+  <meta name="keywords" content="Java,设计模式,面向对象,程序设计,null">
+  <meta name="description" content="学习 Head First Design Pattern，并试图把书上的废话凝练成我自己的废话。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式：基本思想与策略模式">
+<meta property="og:url" content="https://n1vk.github.io/%E6%8A%80%E6%9C%AF/design-pattern-0/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
+<meta property="og:description" content="学习 Head First Design Pattern，并试图把书上的废话凝练成我自己的废话。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-03-28T12:21:57.000Z">
+<meta property="article:modified_time" content="2022-03-28T15:59:35.748Z">
 <meta property="article:author" content="Yang">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="面向对象">
+<meta property="article:tag" content="程序设计">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1690,8 +1698,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1648469834676" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1648469834676"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1648483191253" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1648483191253"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,9 +1776,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1648469834676","sites":"/js/plugins/sites.js?time=1648469834676","friends":"/js/plugins/friends.js?time=1648469834676","parallax":"/js/plugins/parallax.js?time=1648469834676","rightMenu":"/js/plugins/rightMenu.js?time=1648469834676","contributors":"/js/plugins/contributors.js?time=1648469834676","message":"/js/thirdparty/message.js?time=1648469834676","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648469834676","search":"/js/search/hexo.js?time=1648469834676"},"css":{"style":"/css/style.css?time=1648469834676","message":"/css/message.css?time=1648469834676"}},
+    cdn: {"js":{"app":"/js/app.js?time=1648483191253","sites":"/js/plugins/sites.js?time=1648483191253","friends":"/js/plugins/friends.js?time=1648483191253","parallax":"/js/plugins/parallax.js?time=1648483191253","rightMenu":"/js/plugins/rightMenu.js?time=1648483191253","contributors":"/js/plugins/contributors.js?time=1648483191253","message":"/js/thirdparty/message.js?time=1648483191253","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648483191253","search":"/js/search/hexo.js?time=1648483191253"},"css":{"style":"/css/style.css?time=1648483191253","message":"/css/message.css?time=1648483191253"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Mon Mar 28 2022 20:17:14 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Mon Mar 28 2022 23:59:51 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","categoty","tagcloud"],
       for_post: ["toc"],
@@ -2387,7 +2395,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://s2.loli.net/2022/03/28/fiZlyxE3ROI9qaV.png"></div>
 
@@ -2457,25 +2465,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/%E9%9A%8F%E6%83%B3/placeholder/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/%E6%8A%80%E6%9C%AF/design-pattern-0/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Sheep's Blog">
   </span>
@@ -2484,74 +2476,183 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <div class='headimg-div'>
-      <a class='headimg-a' href="/%E9%9A%8F%E6%83%B3/placeholder/">
-        <img itemprop="image" class='headimg' alt="很喜欢马科长说过的一句话" src='https://s2.loli.net/2022/03/28/7FxUytm25TVZie4.png'/>
+      <a class='headimg-a'>
+        <img itemprop="image" class='headimg' src='https://s2.loli.net/2022/03/28/abl7cCKx3fzXnve.png'/>
       </a>
     </div>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/%E9%9A%8F%E6%83%B3/placeholder/"  itemprop="url">
-        很喜欢马科长说过的一句话
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      别讲了，别讲了。
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        设计模式：基本思想与策略模式
+      </h1>
+      <div class='new-meta-box'>
         
           
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/4NteqRw8YAL1kjH.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/4NteqRw8YAL1kjH.png">
-            <meta itemprop="name" content="踩键盘的猫">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-03-27T23:34:49+08:00">2022-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E9%9A%8F%E6%83%B3/">随想</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E9%9A%8F%E6%83%B3/" itemprop="url"><span itemprop="name">随想</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/%E9%9A%8F%E6%83%B3/placeholder/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">羊羊</p>
+  </a>
 </div>
 
-          </div>
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url"><span itemprop="name">技术</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-03-28T20:21:57+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年3月28日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>知道继承，接口，多态和虚类不能让你学会面向对象程序设计。理解<strong>设计模式</strong>，因为设计模式是面向对象开发工程师们多年以来程序设计的经验总结，是为了解决问题而产生的历经验证的工程通用解决方案。良好的设计模式会包含可复用，可扩充，可维护三个特性，而模式可以帮我们做到这点。</p>
+<p>首先来举个简单的例子，来展示继承所不能解决的问题。如图，某游戏公司程序员为自己游戏的职业系统设计了一个 Player 超类，所有的职业都会继承这个超类。在继承时，也会继承超类内所有的方法。如果需要新的职业，那么我们就添加一个新的类。完美！</p>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://s2.loli.net/2022/03/28/RJelt4WkrKUqCE8.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/28/RJelt4WkrKUqCE8.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=" 美丽的UML图"></div><span class="image-caption"> 美丽的UML图</span></div>
+
+<p>现在公司抛出了新的需求：要求玩家应该会闪避。这很好办，只需要在超类里加入一个 dodge() 方法即可。但是在测试的时候发现了新的问题：牧师会闪避导致了他过于强大的生存能力，以至于不需要队友保护他。这和游戏的设计理念不太符合，公司要求程序员让牧师不再会闪避。这也很简单，把 Priest 的 dodge() 方法的具体实现覆盖成什么都不做就可以了。到目前为止，一切都很好…</p>
+<p>直到程序员意识到，公司为了赚钱每个月都会推出一款新职业，他们有的专注攻击不能防御，有的利用防御来攻击，有的……噢还有，公司还会推出氪金装备，使得 Priest 可以有限次的进行闪避动作。天啊，这要怎么办？来看看我们从最初的设计原则可以推出什么。</p>
+<h2 id="变与不变"><a href="#变与不变" class="headerlink" title="变与不变"></a>变与不变</h2><div class="story post-story"><p>应用设计的第一个原则：<strong>找出应用中需要变化之处，将其独立，不要和不需要变化的代码写在一起</strong>。这样，每次新的需求来到，我们就可以不修改固定的部分，只修改变化的部分。</p>
+<p>对于我们的游戏设计来说，我们知道 dodge() 是会随着职业的不同而改变的（<em>当然 attack() 和 defense() 也会变，但是原理是一样的</em> ）。那么我们把闪避行为拿出来，并为它创建一个类。<strong>所有的职业都将 HAS-A 闪避行为。</strong></p>
+</div><h2 id="为谁而写"><a href="#为谁而写" class="headerlink" title="为谁而写"></a>为谁而写</h2><div class="story post-story"><p>应用设计的第二个原则：<strong>针对接口编程，不要针对实现编程</strong>。 说真的，我觉得这句话刚一看到非常难理解。</p>
+<p>什么是实现？职业类如果实现了 dodge() 接口，那么就意味着所有职业都要实现这个接口，因为他们都继承自原始的超类。我们不要把什么类能实现什么在最开始的时候写死。</p>
+<p>怎么针对接口编程？我设计一个 DodgeBehaviour 接口，此接口有 dodge() 方法。现在，我们让具体的类实现这个接口。DodgeNormal 类会正常的躲避，而 DodgeNaught 类什么都不做。现在，闪避行为和 Player 类没有任何关系了。我们可以随意添加闪避行为或者修改行为，比如我们为法师设计一个 DodgeKUXUAN，让闪避的时候会增加粒子效果。</p>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://s2.loli.net/2022/03/28/NQL4YrXentSp9gx.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/28/NQL4YrXentSp9gx.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt=" 另一个美丽的UML图"></div><span class="image-caption"> 另一个美丽的UML图</span></div>
+
+</div><h2 id="完成设计"><a href="#完成设计" class="headerlink" title="完成设计"></a>完成设计</h2><div class="story post-story"><p>现在事情可能会变得有点奇怪，我们如何让某个职业进行闪避？请看代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  healthType Health;</span><br><span class="line">  DodgeBehaviour dodgeBehaviour;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">    </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performDodge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dodgeBehaviour.dodge();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是我们的超类。看，我们通过让职业 HAS-A 行为的方式成功地托管了闪避行为！这也就引出了我们的第三个设计原则：<strong>多用组合，少用继承</strong>。HAS-A is better than IS-A!</p>
+<p>那么相对应的，子类的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Priest</span> <span class="keyword">extends</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Priest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dodgeBehaviour = <span class="keyword">new</span> DodgeNaught();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在构造函数里面，我们写好 Priest 会使用哪种 实现了 DodgeBahaviour 的类。不仅如此，如果我们对 dodgeBehaviour 设定一个 setter 函数，我们就可以在程序运行时改变牧师躲避的行为，比如牧师装备了氪金道具，那么就将 dodgeBehaviour 设定成可以闪避并计数，结束后改回去。这比写一个 ”可以进行10次闪避” 的 Priest 职业好太多了！</p>
+<p>同理，攻击和防御方法都可以用相同的方式实现。以上的设计模式我们称为<strong>策略模式</strong>。策略模式<strong>定义且封装了独立于使用算法客户的算法族，使他们相互之间能够替换</strong>。这也不意味着继承方法真的没用了，比如所有的职业都需要走路，那么 walk() 方法就可以继承。关键点是确立好需求，并选择你需要的设计模式。</p>
+<p>（<em>所以，这位程序员该好好跟他的产品经理吵一架 :P</em> ）</p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-03-28T23:59:35+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年3月28日</p>
+  </a>
+</div>
+
         
       
-    
-  </section>
+        
+          
   
-    
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>设计模式</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>面向对象</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>程序设计</p></a></div>
+  <span hidden itemprop="keywords">Java 设计模式 面向对象 程序设计</span>
 
 
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/%E9%9A%8F%E6%83%B3/placeholder/'>
+          <p class='title'>重新记录我的博客<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>两年前，我抱着玩玩的心态在 Github 上部署了一个小博客。然而搜肠刮肚发现自己既没技术，又没文笔，无甚可写，遂作罢。近日和舍友闲谈，偶然间舍友提到了博客。突然想起了自己曾经弄的小站。再联想到...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2559,94 +2660,30 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://s2.loli.net/2022/03/28/EjCkWKOIRd5J8NZ.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>羊羊</h2>
-        
-        
-          <p>只是随处可见的羊</p>
 
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-        
-          
-            <a href="/about"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/n1vk/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-        
-          
-            <a href="https://t.me/NaHCaKi"
-              class="social fab fa-telegram flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile pjax">
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
     
   <header>
     
-      <a href='/tags'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/%E6%83%B3%E6%B3%95/" style="font-size: 14px; color: #999">想法</a> <a href="/tags/%E7%B3%8A%E5%BC%84/" style="font-size: 14px; color: #999">糊弄</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E4%B8%8E%E4%B8%8D%E5%8F%98"><span class="toc-text">变与不变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E8%B0%81%E8%80%8C%E5%86%99"><span class="toc-text">为谁而写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E8%AE%BE%E8%AE%A1"><span class="toc-text">完成设计</span></a></li></ol>
     </div>
   </section>
-
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2679,14 +2716,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="设计模式：基本思想与策略模式";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2777,7 +2815,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1648469834676.js"></script>
+<script src="/js/app.js?time=1648483191253.js"></script>
 
 
 
@@ -2969,7 +3007,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1648469834676')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1648483191253')</script>
 
 
 
@@ -3098,19 +3136,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1648469834676")
+        volantis.js("/js/plugins/sites.js?time=1648483191253")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1648469834676")
+        volantis.js("/js/plugins/friends.js?time=1648483191253")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1648469834676")
+        volantis.js("/js/plugins/contributors.js?time=1648483191253")
       }
     
   };
@@ -3223,7 +3261,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
       VolantisFancyBox.bind('#valine_container .vcontent img:not(.vemoji)');
     }
   }
-  volantis.js('https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648469834676').then(pjax_valine)
+  volantis.js('https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648483191253').then(pjax_valine)
   volantis.pjax.push(pjax_valine);
 </script>
 
@@ -3243,7 +3281,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1648469834676");
+    return volantis.js("/js/search/hexo.js?time=1648483191253");
   }
 
   function loadSearchService() {
@@ -3534,7 +3572,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/tags/糊弄/","name":"糊弄"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Sheep's Blog","url":"https://n1vk.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","description":""},"publisher":{"@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://n1vk.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/技术/","name":"技术"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/技术/design-pattern-0/","name":"设计模式：基本思想与策略模式"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"设计模式：基本思想与策略模式","description":"学习 Head First Design Pattern，并试图把书上的废话凝练成我自己的废话。","datePublished":"2022-03-28T12:21:57.000Z","dateModified":"2022-03-28T15:59:35.748Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/%E6%8A%80%E6%9C%AF/design-pattern-0/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/%E6%8A%80%E6%9C%AF/design-pattern-0/","wordCount":48,"articleSection":"技术","keywords":"Java,设计模式,面向对象,程序设计","image":{"@type":"ImageObject","url":"https://s2.loli.net/2022/03/28/abl7cCKx3fzXnve.png","width":1024,"height":768}}]</script>
 
 
 <!-- more -->
