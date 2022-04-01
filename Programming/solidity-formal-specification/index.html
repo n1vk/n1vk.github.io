@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.2.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://n1vk.github.io/categories/thoughts/"/>
+  
+  <link rel="canonical" href="https://n1vk.github.io/programming/solidity-formal-specification/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,27 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1648819061678" as="style">
+  <link rel="preload" href="/css/style.css?time=1648819061618" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>分类：Thoughts - Sheep's Blog</title>
-  <meta name="keywords" content="null">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sheep&#39;s Blog">
-<meta property="og:url" content="https://n1vk.github.io/categories/Thoughts/index.html">
+  <title>Solidity 语言的形式化规约 - Sheep's Blog</title>
+  <meta name="keywords" content="Ethereum,Solidity,智能合约,null">
+  <meta name="description" content="Solidity 语言一旦被部署到区块链就无法更改，这要求程序员在设计程序的时候对于变量的改变更加谨慎。形式化规约应运而生，其以注释的方式储存在代码间以供程序员参阅，在必要的时候也可以使用外部程序根据注释进行验证。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solidity 语言的形式化规约">
+<meta property="og:url" content="https://n1vk.github.io/Programming/solidity-formal-specification/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
+<meta property="og:description" content="Solidity 语言一旦被部署到区块链就无法更改，这要求程序员在设计程序的时候对于变量的改变更加谨慎。形式化规约应运而生，其以注释的方式储存在代码间以供程序员参阅，在必要的时候也可以使用外部程序根据注释进行验证。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2022-03-31T14:19:43.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:17:02.986Z">
 <meta property="article:author" content="Yang">
+<meta property="article:tag" content="Ethereum">
+<meta property="article:tag" content="Solidity">
+<meta property="article:tag" content="智能合约">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1690,8 +1697,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1648819061678" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1648819061678"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1648819061618" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1648819061618"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,7 +1775,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1648819061678","sites":"/js/plugins/sites.js?time=1648819061678","friends":"/js/plugins/friends.js?time=1648819061678","parallax":"/js/plugins/parallax.js?time=1648819061678","rightMenu":"/js/plugins/rightMenu.js?time=1648819061678","contributors":"/js/plugins/contributors.js?time=1648819061678","message":"/js/thirdparty/message.js?time=1648819061678","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648819061678","search":"/js/search/hexo.js?time=1648819061678"},"css":{"style":"/css/style.css?time=1648819061678","message":"/css/message.css?time=1648819061678"}},
+    cdn: {"js":{"app":"/js/app.js?time=1648819061618","sites":"/js/plugins/sites.js?time=1648819061618","friends":"/js/plugins/friends.js?time=1648819061618","parallax":"/js/plugins/parallax.js?time=1648819061618","rightMenu":"/js/plugins/rightMenu.js?time=1648819061618","contributors":"/js/plugins/contributors.js?time=1648819061618","message":"/js/thirdparty/message.js?time=1648819061618","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648819061618","search":"/js/search/hexo.js?time=1648819061618"},"css":{"style":"/css/style.css?time=1648819061618","message":"/css/message.css?time=1648819061618"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
     lastupdate: new Date('Fri Apr 01 2022 21:17:41 GMT+0800 (China Standard Time)'),
     sidebar: {
@@ -2387,7 +2394,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://s2.loli.net/2022/03/28/fiZlyxE3ROI9qaV.png"></div>
 
@@ -2457,25 +2464,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Thoughts/init_post/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/solidity-formal-specification/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Sheep's Blog">
   </span>
@@ -2484,74 +2475,253 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <div class='headimg-div'>
-      <a class='headimg-a' href="/Thoughts/init_post/">
-        <img itemprop="image" class='headimg' alt="重新记录我的博客" src='https://s2.loli.net/2022/03/28/5Uq2C6oTVeiRkMX.png'/>
+      <a class='headimg-a'>
+        <img itemprop="image" class='headimg' src='https://s2.loli.net/2022/04/01/ZzQJbYoW9NqmaHs.png'/>
       </a>
     </div>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Thoughts/init_post/"  itemprop="url">
-        重新记录我的博客
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      不要再摸了。
     
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+      <h1 class="title" itemprop="name headline">
+        Solidity 语言的形式化规约
+      </h1>
+      <div class='new-meta-box'>
         
           
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/4NteqRw8YAL1kjH.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/4NteqRw8YAL1kjH.png">
-            <meta itemprop="name" content="踩键盘的猫">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-03-27T23:34:49+08:00">2022-03-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Thoughts/">Thoughts</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Thoughts/" itemprop="url"><span itemprop="name">Thoughts</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Thoughts/init_post/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">羊羊</p>
+  </a>
 </div>
 
-          </div>
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Programming/">Programming</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-03-31T22:19:43+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年3月31日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>智能合约与其他软件一样容易有错误和漏洞。在以太坊环境下，任何错误都伴随着潜在的对金融的破坏性结果。因此引入了形式化规约来验证操作。形式化规约存在相当多的形式，并拥有严谨的数学证明来描述系统行为，从<strong>事件所跟踪的具体的区块链上数据</strong>的角度来具体说明智能合约的行为。本文将给出两种不同的形式化规约。</p>
+<h2 id="基于事件的形式化规约"><a href="#基于事件的形式化规约" class="headerlink" title="基于事件的形式化规约"></a>基于事件的形式化规约</h2><div class="story post-story"><p>一篇来自<a target="_blank" rel="noopener" href="http://www.bme.hu/?language=en">BME</a>的论文介绍了基于事件的形式化规约，并给出了名为 <code>SOLC_VERIFY</code>的 验证程序。但是本文章只关心其提出的形式化规约说明。验证程序基于模块化程序验证，由Mike Barnett在其之前的<a target="_blank" rel="noopener" href="https://link.springer.com/chapter/10.1007/11804192_17">论文</a>中提出，这与计算科学和程序语义等学科相关，不做讨论。</p>
+<h3 id="智能合约事件介绍"><a href="#智能合约事件介绍" class="headerlink" title="智能合约事件介绍"></a>智能合约事件介绍</h3><p>本文介绍的方法主要用于依靠事件 (Event) 传递消息的 Solidity 程序。</p>
+<p>Solidity 是面向合约的智能合约编程语言的代表。而事件代表了与用户相关的、有限的交易执行。合约可以利用事件传递链上数据的状态改变情况。技术上来说，事件可以看做有参数的触发器，其存储位置位于<strong>区块链的日志</strong>。这些日志是合约无法访问的，而用户却可以轻易的监听这些事件从而获得值。以往，事件往往是被认为是一种<strong>日志记录机制</strong>，与程序设计的正确性无关。然而，既然事件是DAPP中最主要的为用户设计的状态改变提示机制，确保用户正确理解且信任发送的事件是十分关键的。</p>
+<p>Solidity 不为发送事件设置任何限制，因此错误的（或恶意的）合约可以发送与状态改变不一致的事件，或对于某些改变忽略发送事件，潜在的将会误导用户。</p>
+<h3 id="语法举例"><a href="#语法举例" class="headerlink" title="语法举例"></a>语法举例</h3><p>请首先看已经加入形式化规约的 Solidity 演示代码：</p>
+<figure class="highlight js"><figcaption><span>Solidity</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">contract Registry &#123;</span><br><span class="line">	struct Entry &#123; bool set; int data; &#125; <span class="comment">// User-defined type</span></span><br><span class="line">	mapping(<span class="function"><span class="params">address</span>=&gt;</span>Entry) entries; <span class="comment">// State variable</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">/// @notice tracks-changes-in entries</span></span><br><span class="line">	<span class="comment">/// @notice precondition !entries[at].set</span></span><br><span class="line">	<span class="comment">/// @notice postcondition entries[at].set &amp;&amp; entries[at].data == value </span></span><br><span class="line">	event new_entry(address at, int value);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/// @notice tracks-changes-in entries</span></span><br><span class="line">	<span class="comment">/// @notice precondition entries[at].set &amp;&amp; entries[at].data &lt; value 		</span></span><br><span class="line">	<span class="comment">/// @notice postcondition entries[at].set &amp;&amp; entries[at].data == value </span></span><br><span class="line">	event updated_entry(address at, int value);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/// @notice emits new_entry</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">int value</span>) <span class="title">public</span> </span>&#123; </span><br><span class="line">		<span class="built_in">require</span>(!entries[msg.sender].set); </span><br><span class="line">		entries[msg.sender].set = <span class="literal">true</span>; </span><br><span class="line">		entries[msg.sender].data = value; </span><br><span class="line">		emit new_entry(msg.sender, value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/// @notice emits updated_entry</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">int value</span>) <span class="title">public</span> </span>&#123;</span><br><span class="line">		<span class="built_in">require</span>(entries[msg.sender].set &amp;&amp; entries[msg.sender].data &lt; value); </span><br><span class="line">		entries[msg.sender].data = value;</span><br><span class="line">		emit updated_entry(msg.sender, value);</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 演示代码非常简单，定义了一个 Entry 结构，和一个地址到 Entry 的映射的变量（在文章中叫做状态变量，<strong>state variable</strong>)；两个事件，一个代表新加入合约，另一个代表更新加入合约。以及添加和更新的函数。</p>
+<p>首先，某个事件都跟随的是 <code>entries</code> 变量的变化，因此我们写出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; @notice tracks-changes-in entries</span><br></pre></td></tr></table></figure>
+
+<p><code>tracks-changes-in</code> 关键字所说明的事实是：事件被触发<strong>当且仅当</strong>被跟踪的变量改变。由于数据经常以多步过程的形式改变（如例子中，函数依次更新了 Entry 结构中的两个数据），或者数据更新存在某种条件，因此事件不会总是立刻跟在某个追踪变量的改动后。因此，文章提出了前/后检查点的概念。前检查点是由事件所追踪的变量的第一次改变所动态的定义的。相对的，后检查点是一个静态边界，一般是循环或交易的边缘。<em>说白了就是，你的事件<strong>必须</strong>要在你跟的变量第一次改变之后，离开程序之前进行一次激发。</em></p>
+<p>在跟随变量以外，事件也可以被用 <code>predicates</code> 来注释，它是用状态变量和事件的参数来定义的，并且有两种，<code>preconditions</code> 和 <code>postconditions</code>。前置条件在前检查点前捕捉状态变量的值，而后置条件对应着事件被发送的时刻。</p>
+<p>举例来说，对于 <code>new_entry</code> 事件，其要求用户一开始不处于 <code>entries</code>，即<code>set</code> 布尔类型为假，且事件发出后用户属于<code>entries</code>，<code>data</code> 被赋值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; @notice precondition !entries[at].set</span><br><span class="line">&#x2F;&#x2F;&#x2F; @notice postcondition entries[at].set &amp;&amp; entries[at].data &#x3D;&#x3D; value </span><br><span class="line">event new_entry(address at, int value);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>最后，发射事件的函数必须被标记处发射了何等事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; @notice emits updated_entry</span><br><span class="line">function update(int value) public &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</div><h2 id="基于函数的形式化规约"><a href="#基于函数的形式化规约" class="headerlink" title="基于函数的形式化规约"></a>基于函数的形式化规约</h2><div class="story post-story"><p>基于函数的形式化规约和基于事件的有很多相似之处（<em>并且是南大78004870课程所讲述的模式</em>），只是把修改变量的规约放在函数（与合约、循环）前。并且由于函数可以对值进行修改，而非像事件一样仅展现变化，所以会比基于事件的规约增加其他的东西。请看下例：</p>
+<figure class="highlight js"><figcaption><span>Solidity</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// @notice invariant x == y</span></span><br><span class="line">contract Track &#123;</span><br><span class="line">	int x;</span><br><span class="line">	int y;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/// @notice precondition x == y</span></span><br><span class="line">	<span class="comment">/// @notice postcondition x == (y + n)</span></span><br><span class="line">	<span class="comment">/// @notice modifies x</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">add_to_x</span>(<span class="params">int n</span>) <span class="title">internal</span> </span>&#123;</span><br><span class="line">		x = x + n;</span><br><span class="line">		<span class="built_in">require</span>(x &gt;= y);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/// @notice modifies x if n &gt; 0</span></span><br><span class="line">	<span class="comment">/// @notice modifies y if n &gt; 0</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">int n</span>) <span class="title">public</span> </span>&#123;</span><br><span class="line">		<span class="built_in">require</span>(n &gt;= <span class="number">0</span>);</span><br><span class="line">		add_to_x(n);</span><br><span class="line">		<span class="comment">/// @notice invariant y&lt;=x</span></span><br><span class="line">		<span class="function"><span class="title">while</span>(<span class="params">y &lt; x</span>)</span> &#123;</span><br><span class="line">			y = y + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由例子，我们可以总结出基本的语句：</p>
+<ul>
+<li><p>如果某变量没有被改变，那么需要注明<strong>不变式</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invariant &lt;EXPRESSION&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意，不变式出现在循环，合约，函数前。</p>
+</li>
+</ul>
+<ul>
+<li><p>如果函数开始前/结束后必须满足某条件，那么需要注明<strong>前置条件</strong>/<strong>后置条件</strong>，与基于事件的一样。</p>
+</li>
+<li><p>如果函数执行改变了状态变量，那么需要注明<strong>修改规约</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modifies &lt;TARGET&gt; [if &lt;CONDITION&gt;]</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="进阶的规约表达"><a href="#进阶的规约表达" class="headerlink" title="进阶的规约表达"></a>进阶的规约表达</h3><p>课程同时给出了一些进阶的规约表达方式，例如：</p>
+<ul>
+<li><p>聚合计算的表达：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__verifier_sum_&lt;TYPE&gt;( ... )</span><br></pre></td></tr></table></figure>
+
+<p>所代表了将 <code>&lt;TYPE&gt;</code> 相加所得到的结果。</p>
+</li>
+<li><p>复合数据类型判等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__verifier_eq(..., ...)</span><br></pre></td></tr></table></figure>
+
+<p>其实就是更加复杂的 <code>x == y</code>。</p>
+</li>
+<li><p>变量旧值引用:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__verifier_old_&lt;TYPE&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>也许是在循环中引用上一次的值或者引用修改前的值</em>。</p>
+</li>
+<li><p>谓词逻辑表达：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">forall (&lt;VARS&gt;) &lt;QUANTEXPR&gt;</span><br><span class="line"></span><br><span class="line">exists (&lt;VARS&gt;) &lt;QUANTEXPR&gt;</span><br></pre></td></tr></table></figure>
+
+<p>举例来说：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forall (uint λ) !(λ &gt;&#x3D; 0 &amp;&amp; λ &lt; length)</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</div><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="story post-story"><p>形式化规约是一种让程序设计更加严谨的实现，而对于对准确度要求高的智能合约来说更加有用。即使没有检查器，掌握形式化合约也有助于形成良好的变量追踪与查询习惯。</p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
+      
+        <div class='references'>
+          <section class='header'>
+            
+              <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i>
+            
+            <span>参考资料</span>
+          </section>
+          <section class='body'>
+            <ul>
+              
+                <li>
+                  <a href="https://arxiv.org/pdf/2005.10382.pdf" rel="external nofollow noopener noreferrer" target="_blank">
+                  Hajdu, Á. (2020). Formal Specification and Verification of Solidity Contracts with Events.
+                  </a>
+                </li>
+              
+            </ul>
+          </section>
+        </div>
+      
+      
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-04-01T21:17:02+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年4月1日</p>
+  </a>
+</div>
+
         
       
-    
-  </section>
+        
+          
   
-    
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Ethereum/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Ethereum</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Solidity/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Solidity</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>智能合约</p></a></div>
+  <span hidden itemprop="keywords">Ethereum Solidity 智能合约</span>
 
 
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/Programming/smart-contract/'>
+          <p class='title'>简单的以太坊智能合约部署<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>可以简单的把以太坊虚拟机理解为一个公开使用的后端服务器，用户在其上拥有有限的操作空间，每次操作以交易的形式产生，并会根据修改数据的大小向用户收费，称为 Gas，以此支持服务器维护人员 (即矿工)...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2559,94 +2729,30 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://s2.loli.net/2022/03/28/EjCkWKOIRd5J8NZ.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>羊羊</h2>
-        
-        
-          <p>只是随处可见的羊</p>
 
-        
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-        
-          
-            <a href="/about"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/n1vk/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-        
-          
-            <a href="https://t.me/NaHCaKi"
-              class="social fab fa-telegram flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile pjax">
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
     
   <header>
     
-      <a href='/tags'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/Ethereum/" style="font-size: 24px; color: #555">Ethereum</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Solidity/" style="font-size: 24px; color: #555">Solidity</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">博客</a> <a href="/tags/%E6%83%B3%E6%B3%95/" style="font-size: 14px; color: #999">想法</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 24px; color: #555">智能合约</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 24px; color: #555">程序设计</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 14px; color: #999">记录</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 14px; color: #999">设计模式</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 14px; color: #999">面向对象</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96%E8%A7%84%E7%BA%A6"><span class="toc-text">基于事件的形式化规约</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="toc-text">智能合约事件介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E4%B8%BE%E4%BE%8B"><span class="toc-text">语法举例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%87%BD%E6%95%B0%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%8C%96%E8%A7%84%E7%BA%A6"><span class="toc-text">基于函数的形式化规约</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E7%9A%84%E8%A7%84%E7%BA%A6%E8%A1%A8%E8%BE%BE"><span class="toc-text">进阶的规约表达</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
     </div>
   </section>
-
 
   
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2679,14 +2785,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Solidity 语言的形式化规约";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2777,7 +2884,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1648819061678.js"></script>
+<script src="/js/app.js?time=1648819061618.js"></script>
 
 
 
@@ -2969,7 +3076,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1648819061678')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1648819061618')</script>
 
 
 
@@ -3098,19 +3205,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1648819061678")
+        volantis.js("/js/plugins/sites.js?time=1648819061618")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1648819061678")
+        volantis.js("/js/plugins/friends.js?time=1648819061618")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1648819061678")
+        volantis.js("/js/plugins/contributors.js?time=1648819061618")
       }
     
   };
@@ -3223,7 +3330,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
       VolantisFancyBox.bind('#valine_container .vcontent img:not(.vemoji)');
     }
   }
-  volantis.js('https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648819061678').then(pjax_valine)
+  volantis.js('https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648819061618').then(pjax_valine)
   volantis.pjax.push(pjax_valine);
 </script>
 
@@ -3243,7 +3350,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1648819061678");
+    return volantis.js("/js/search/hexo.js?time=1648819061618");
   }
 
   function loadSearchService() {
@@ -3534,7 +3641,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Thoughts/","name":"Thoughts"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Sheep's Blog","url":"https://n1vk.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","description":""},"publisher":{"@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://n1vk.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/solidity-formal-specification/","name":"Solidity 语言的形式化规约"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Solidity 语言的形式化规约","description":"Solidity 语言一旦被部署到区块链就无法更改，这要求程序员在设计程序的时候对于变量的改变更加谨慎。形式化规约应运而生，其以注释的方式储存在代码间以供程序员参阅，在必要的时候也可以使用外部程序根据注释进行验证。","datePublished":"2022-03-31T14:19:43.000Z","dateModified":"2022-04-01T13:17:02.986Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/solidity-formal-specification/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/solidity-formal-specification/","wordCount":107,"articleSection":"Programming","keywords":"Ethereum,Solidity,智能合约","image":{"@type":"ImageObject","url":"https://s2.loli.net/2022/04/01/ZzQJbYoW9NqmaHs.png","width":1024,"height":768}}]</script>
 
 
 <!-- more -->
