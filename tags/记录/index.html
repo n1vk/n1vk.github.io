@@ -20,7 +20,7 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1648819061697" as="style">
+  <link rel="preload" href="/css/style.css?time=1649088309264" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1690,8 +1690,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1648819061697" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1648819061697"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1649088309264" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1649088309264"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,9 +1768,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1648819061697","sites":"/js/plugins/sites.js?time=1648819061697","friends":"/js/plugins/friends.js?time=1648819061697","parallax":"/js/plugins/parallax.js?time=1648819061697","rightMenu":"/js/plugins/rightMenu.js?time=1648819061697","contributors":"/js/plugins/contributors.js?time=1648819061697","message":"/js/thirdparty/message.js?time=1648819061697","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648819061697","search":"/js/search/hexo.js?time=1648819061697"},"css":{"style":"/css/style.css?time=1648819061697","message":"/css/message.css?time=1648819061697"}},
+    cdn: {"js":{"app":"/js/app.js?time=1649088309264","sites":"/js/plugins/sites.js?time=1649088309264","friends":"/js/plugins/friends.js?time=1649088309264","parallax":"/js/plugins/parallax.js?time=1649088309264","rightMenu":"/js/plugins/rightMenu.js?time=1649088309264","contributors":"/js/plugins/contributors.js?time=1649088309264","message":"/js/thirdparty/message.js?time=1649088309264","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1649088309264","search":"/js/search/hexo.js?time=1649088309264"},"css":{"style":"/css/style.css?time=1649088309264","message":"/css/message.css?time=1649088309264"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Fri Apr 01 2022 21:17:41 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Tue Apr 05 2022 00:05:09 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","categoty","tagcloud"],
       for_post: ["toc"],
@@ -2777,7 +2777,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1648819061697.js"></script>
+<script src="/js/app.js?time=1649088309264.js"></script>
 
 
 
@@ -2969,7 +2969,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1648819061697')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1649088309264')</script>
 
 
 
@@ -3098,19 +3098,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1648819061697")
+        volantis.js("/js/plugins/sites.js?time=1649088309264")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1648819061697")
+        volantis.js("/js/plugins/friends.js?time=1649088309264")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1648819061697")
+        volantis.js("/js/plugins/contributors.js?time=1649088309264")
       }
     
   };
@@ -3174,57 +3174,51 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
   <script>
-  volantis.layoutHelper("comments",`<div id="valine_container"><i class="fa-solid fa-cog fa-spin fa-fw fa-2x"></i></div>`)
-  function emoji(path, idx, ext) {
-    return path + "/" + path + "-" + idx + "." + ext;
-  }
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-  function pjax_valine() {
-    if(!document.querySelectorAll("#valine_container")[0])return;
-    let pagePlaceholder = pdata.commentPlaceholder || "你的想法是...";
-    let path = pdata.commentPath;
-    if (path.length == 0) {
-      let defaultPath = '';
-      path = defaultPath || decodeURI(window.location.pathname);
-    }
-    var valine = new Valine();
-    valine.init(Object.assign(Object.assign({"js":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js","emojiCDN":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/","path":null,"placeholder":"你的想法是...","appId":"QLo7VTIfiefw8eYjXBVCQTMg-gzGzoHsz","appKey":"MsSO0OJQHImRF8qJxRukgyJ3","meta":"nick,mail,link","requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"visitor":true}, {
-      el: '#valine_container',
-      path: path,
-      placeholder: pagePlaceholder,
-      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
-      emojiMaps: emojiMaps,
-    }),pdata.commentConfig))
-    fancybox_valine()
-  }
-  function fancybox_valine() {
-    if(typeof VolantisFancyBox === "undefined") {
-      const checkFancyBox = setInterval(() => {
-        if(typeof VolantisFancyBox === "undefined") return;
-        clearInterval(checkFancyBox);
-        VolantisFancyBox.bind('#valine_container .vcontent img:not(.vemoji)');
-      })
+  volantis.layoutHelper("comments",`<div id="giscus_container"></div>`)
+
+  volantis.giscus = {};
+
+  function check_giscus() {
+    if (volantis.dark.mode === "dark") {
+      volantis.giscus.Theme = 'dark';
     } else {
-      VolantisFancyBox.bind('#valine_container .vcontent img:not(.vemoji)');
+      volantis.giscus.Theme = 'light';
     }
+
+    return document.getElementById("giscus_container");
   }
-  volantis.js('https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1648819061697').then(pjax_valine)
-  volantis.pjax.push(pjax_valine);
+
+  function pjax_giscus() {
+    const HEAD = check_giscus();
+    if (!HEAD) return;
+    let cfg = Object.assign({"theme":{"light":"light","dark":"dark"},"repo":"n1vk/n1vk.github.io","repo-id":"MDEwOlJlcG9zaXRvcnkzMDQ5MDk5NTM=","category":"Announcements","category-id":"DIC_kwDOEiyOgc4COag5","mapping":"pathname","reactions-enabled":"1","emit-metadata":"0","lang":"zh-CN","input-position":"top"},pdata.commentConfig)
+    const script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    Object.keys(cfg).forEach(k=>{
+      if (k != "theme") {
+        script.setAttribute('data-'+k, cfg[k]);
+      }
+    })
+    script.setAttribute('data-theme', volantis.giscus.Theme);
+    script.setAttribute('crossorigin', "anonymous");
+    HEAD.appendChild(script);
+  }
+
+  function dark_giscus() {
+    const HEAD = check_giscus();
+    if (!HEAD) return;
+
+    const message = {
+      setConfig: {
+        theme: volantis.giscus.Theme
+      }
+    };
+    const giscusIframe = document.querySelector('iframe.giscus-frame');
+    giscusIframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+  pjax_giscus();
+  volantis.pjax.push(pjax_giscus);
+  volantis.dark.push(dark_giscus);
 </script>
 
 
@@ -3243,7 +3237,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1648819061697");
+    return volantis.js("/js/search/hexo.js?time=1649088309264");
   }
 
   function loadSearchService() {
