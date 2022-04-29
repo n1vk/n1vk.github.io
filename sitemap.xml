@@ -101,27 +101,6 @@
 
   
   <url>
-    <loc>https://n1vk.github.io/tags/Python/</loc>
-    <lastmod>2022-04-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://n1vk.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-04-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://n1vk.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2022-04-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://n1vk.github.io/tags/Java/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -143,6 +122,13 @@
   </url>
   
   <url>
+    <loc>https://n1vk.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2022-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://n1vk.github.io/tags/%E6%83%B3%E6%B3%95/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -158,6 +144,20 @@
   
   <url>
     <loc>https://n1vk.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2022-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/Python/</loc>
+    <lastmod>2022-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -187,13 +187,6 @@
 
   
   <url>
-    <loc>https://n1vk.github.io/categories/Note/</loc>
-    <lastmod>2022-04-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://n1vk.github.io/categories/Programming/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -202,6 +195,13 @@
   
   <url>
     <loc>https://n1vk.github.io/categories/Thoughts/</loc>
+    <lastmod>2022-04-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/categories/Note/</loc>
     <lastmod>2022-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
