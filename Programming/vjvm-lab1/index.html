@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://n1vk.github.io/programming/smart-contract/"/>
+  <link rel="canonical" href="https://n1vk.github.io/programming/vjvm-lab1/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,27 +20,27 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1652167896291" as="style">
+  <link rel="preload" href="/css/style.css?time=1652167896284" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>简单的以太坊智能合约部署 - Sheep's Blog</title>
-  <meta name="keywords" content="Ethereum,Solidity,智能合约,null">
-  <meta name="description" content="基于 Solidity 合约语言和本地私有链，部署简易的以太坊智能合约的记录。">
+  <title>构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新) - Sheep's Blog</title>
+  <meta name="keywords" content="Java,面向对象,Java Virtual Machine,null">
+  <meta name="description" content="本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单的以太坊智能合约部署">
-<meta property="og:url" content="https://n1vk.github.io/Programming/smart-contract/index.html">
+<meta property="og:title" content="构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)">
+<meta property="og:url" content="https://n1vk.github.io/Programming/vjvm-lab1/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
-<meta property="og:description" content="基于 Solidity 合约语言和本地私有链，部署简易的以太坊智能合约的记录。">
+<meta property="og:description" content="本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2022-03-29T02:49:53.000Z">
-<meta property="article:modified_time" content="2022-04-04T16:04:28.276Z">
+<meta property="article:published_time" content="2022-05-10T06:02:27.000Z">
+<meta property="article:modified_time" content="2022-05-10T07:31:12.446Z">
 <meta property="article:author" content="Yang">
-<meta property="article:tag" content="Ethereum">
-<meta property="article:tag" content="Solidity">
-<meta property="article:tag" content="智能合约">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="面向对象">
+<meta property="article:tag" content="Java Virtual Machine">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1697,8 +1697,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1652167896291" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1652167896291"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1652167896284" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1652167896284"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1775,7 +1775,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1652167896291","sites":"/js/plugins/sites.js?time=1652167896291","friends":"/js/plugins/friends.js?time=1652167896291","parallax":"/js/plugins/parallax.js?time=1652167896291","rightMenu":"/js/plugins/rightMenu.js?time=1652167896291","contributors":"/js/plugins/contributors.js?time=1652167896291","message":"/js/thirdparty/message.js?time=1652167896291","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1652167896291","search":"/js/search/hexo.js?time=1652167896291"},"css":{"style":"/css/style.css?time=1652167896291","message":"/css/message.css?time=1652167896291"}},
+    cdn: {"js":{"app":"/js/app.js?time=1652167896284","sites":"/js/plugins/sites.js?time=1652167896284","friends":"/js/plugins/friends.js?time=1652167896284","parallax":"/js/plugins/parallax.js?time=1652167896284","rightMenu":"/js/plugins/rightMenu.js?time=1652167896284","contributors":"/js/plugins/contributors.js?time=1652167896284","message":"/js/thirdparty/message.js?time=1652167896284","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1652167896284","search":"/js/search/hexo.js?time=1652167896284"},"css":{"style":"/css/style.css?time=1652167896284","message":"/css/message.css?time=1652167896284"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
     lastupdate: new Date('Tue May 10 2022 15:31:36 GMT+0800 (China Standard Time)'),
     sidebar: {
@@ -2466,7 +2466,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/smart-contract/">
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/vjvm-lab1/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Sheep's Blog">
   </span>
@@ -2480,7 +2480,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class='headimg-div'>
       <a class='headimg-a'>
-        <img itemprop="image" class='headimg' src='https://s2.loli.net/2022/04/01/oUPnerwfjpdmLah.png'/>
+        <img itemprop="image" class='headimg' src='https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png'/>
       </a>
     </div>
   
@@ -2489,7 +2489,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        简单的以太坊智能合约部署
+        构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)
       </h1>
       <div class='new-meta-box'>
         
@@ -2520,10 +2520,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-03-29T10:49:53+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2022-05-10T14:02:27+08:00">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2022年3月29日</p>
+    <p>发布于：2022年5月10日</p>
   </a>
 </div>
 
@@ -2539,32 +2539,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>可以简单的把以太坊虚拟机理解为一个公开使用的后端服务器，用户在其上拥有有限的操作空间，每次操作以交易的形式产生，并会根据修改数据的大小向用户收费，称为 <strong>Gas</strong>，以此支持服务器维护人员 (即矿工)。并且，服务器上的数据会被永久记录，操作后端数据的代码 (对于EVM，是 Solidity 代码) 也存放在服务器上不能被修改。</p>
-<p>矿工可以根据 Gas 和数据操作量选择将哪一笔交易加入区块。因此 Solidity 编程要求存储尽量少的数据，节省空间和操作量，以此得到更快速的响应。</p>
-<h2 id="使用-Remix-和-Ganache"><a href="#使用-Remix-和-Ganache" class="headerlink" title="使用 Remix 和 Ganache"></a>使用 Remix 和 Ganache</h2><div class="story post-story"><p><a target="_blank" rel="noopener" href="https://remix.ethereum.org/">Remix</a> 是以太坊官方提供的 Solidity 开发环境。在 Remix 内写好代码后可以编译，编译会得到程序的二进制程序接口，称为 ABI。ABI 会提供给 web3.js 来提供操作接口。在编译后可以部署合约，Remix 本身提供了一些 JavaScript 虚拟机来运行智能合约。为了观察到用户和交易的情况，我们可以部署私有链，利用 Ganache。部署后会得到合约地址，你也可以直接在 Remix 和合约交互。</p>
-<p><a target="_blank" rel="noopener" href="https://trufflesuite.com/ganache/index.html">Ganache</a> 可以在本地设置好私有区块链，即开即用。用户可以自行设置端口号，而网络ID为5777而区块链ID为1337。在本地部署好之后，使用 MetaMask 钱包添加私有链。MetaMask 也可以使用其他测试链，虽然其他测试链可以有更多的用户，但在这些链上我们难以观察交易情况。添加私有链后，也记得添加私有链的账户。</p>
-<p>说到账户，对于以太坊地址来说，所有链上的地址格式都完全一致。因此，你的任何一个账户都可以在任何链上使用（当然代币不会跟随）。可以尝试把 Ganache 里生成的账户的钱转入一个你主链的地址，操作将会成功且主链地址<strong>在私有链</strong>上的 ETH 会增加。注意 Ganache 不会追踪除了它生成的账户以外的账户（因为无穷多），但是你仍然可以看到 TX 信息，就在 Ganache 的操作面板。这到底是怎么做到的？得益于钱包地址的随机和海量，生成的两个地址相同的概率几乎是不可能的。</p>
-</div><h2 id="Solidity-代码"><a href="#Solidity-代码" class="headerlink" title="Solidity 代码"></a>Solidity 代码</h2><div class="story post-story"><p>设计一个 Solidity 代码，对于每个账户存放一个数据，并且允许用户查看数据。</p>
-<p>(<em>很遗憾，Hexo 对于 Solidity 代码暂时没有语法高亮，我也不想使用 hightlight.js，所以我随便选用了一种代码高亮模式。</em>)</p>
-<figure class="highlight c#"><figcaption><span>Solidity</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明 License</span></span><br><span class="line"><span class="comment">// SPDX-License-Identifier: GPL-3.0</span></span><br><span class="line"><span class="comment">// 声明编译器版本</span></span><br><span class="line">pragma solidity &gt;=<span class="number">0.7</span><span class="number">.0</span> &lt;<span class="number">0.9</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合约，就像一个类</span></span><br><span class="line">contract numberHolder &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 映射数据结构</span></span><br><span class="line">    mapping(address =&gt; uint16) userNumbers;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一个事件</span></span><br><span class="line">	<span class="function"><span class="keyword">event</span> <span class="title">numberSetted</span>(<span class="params">address addr,uint16 num</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 地址的数据的setter函数</span></span><br><span class="line">    <span class="function">function <span class="title">setNumber</span>(<span class="params">uint16 inputNumber</span>) <span class="keyword">public</span></span>&#123;</span><br><span class="line">        userNumbers[msg.sender] = inputNumber;</span><br><span class="line">        <span class="comment">// 发送事件给前端</span></span><br><span class="line">		<span class="function">emit <span class="title">numberSetted</span>(<span class="params">msg.sender, userNumbers[msg.sender]</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 两个只读函数获得用户地址和数据</span></span><br><span class="line">    <span class="function">function <span class="title">getNumber</span>(<span class="params"></span>) <span class="keyword">public</span> view <span class="title">returns</span> (<span class="params">uint16</span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userNumbers[msg.sender];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">function <span class="title">getAddress</span>(<span class="params"></span>) <span class="keyword">public</span> view <span class="title">returns</span> (<span class="params">address</span>)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> msg.sender;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>具体内容可以查看 Solidity 的<a target="_blank" rel="noopener" href="https://solidity-cn.readthedocs.io/zh/develop/">文档</a>。函数发射的事件需要在前端进行监听。关键字 <code>view</code> 代表了这个函数不会操作数据。全局变量 <code>msg</code> 存储了一些当前合约的信息，例如 <code>msg.sender</code> 就是调用合约的地址。</p>
-</div><h2 id="Web-代码"><a href="#Web-代码" class="headerlink" title="Web 代码"></a>Web 代码</h2><div class="story post-story"><p>Web 端我们使用以太坊 JavaScript API和后端交互，叫做 web3.js，使用此库类似于使用 jQuery 的 ajax。实际上，包括部署合约在内的操作都可以用 web3.js 完成，但本次我们不这样做。</p>
-<p>在网页端，首先用简单 HTML 完成界面，给用户提示信息，显示一个可变文本并设置两个按钮：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>数字存放<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    在数据框中输入一个数字并点击上传数据，它将会被存储至区块，请注意这会消耗燃料。<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    点击获得数据将会显示您已经存储的数据，这不会消耗燃料。</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;info&quot;</span>&gt;</span>等待输入<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;data&quot;</span> <span class="attr">class</span>=<span class="string">&quot;col-lg-2 control-label&quot;</span>&gt;</span>您的数据<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;data&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;button_update&quot;</span>&gt;</span>上传数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;button_download&quot;</span>&gt;</span>获得数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>接下来在 <code>&lt;script&gt;</code> 部分设计网页的逻辑。别忘记把 web3.js 和 jQuery 加入到网页中。首先配置好我们的 web3 库：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> web3 !== <span class="string">&#x27;undefined&#x27;</span>) &#123;</span><br><span class="line">    web3 = <span class="keyword">new</span> Web3(web3.currentProvider);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    web3 = <span class="keyword">new</span> Web3(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">&quot;http://localhost:8545&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这声明了，我们的 web3 是由 HTTP 在本地8545端口提供，也就是我们的 Ganache。接下来：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.defaultAccount = web3.eth.accounts[<span class="number">0</span>];</span><br><span class="line">		</span><br><span class="line"><span class="keyword">var</span> contractABI = web3.eth.contract(<span class="comment">/* ABI Here */</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myContract = contractABI.at(<span class="string">&#x27;0x6f0D3623...&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>第一行代码说明了我们默认交互账户是 Ganache 里的第一个账户。我们现在还不将 MetaMask 链接功能提供在前端。MetaMask 要求前端网页不能是本地打开的，必须运行在一个服务器上 (Python 搭建的简易 HTTP 服务器就可以)，并且需要更复杂且完善的代码。第二行代码需要我们写入之前在 Remix 得到的 ABI，这是我们交互的基础。第三行就是合约本身，从语义上可以理解为：某个 ABI 位于某个确定的地址上。这个地址可以在 Remix 处看到，或在 Ganache 的 TX 信息里找到。</p>
-<p>接下来我们来看一下在前端如何调用 Solidity 函数，并用 jQuery 改变前端显示。首先演示一下按钮如何获得数据：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&quot;#button_update&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	myContract.setNumber($(<span class="string">&quot;#data&quot;</span>).val());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(<span class="string">&quot;#button_download&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">&quot;#info&quot;</span>).html(<span class="string">&#x27;您的地址：&#x27;</span> + myContract.getAddress.call() + <span class="string">&#x27;&lt;br&gt;&#x27;</span> + <span class="string">&#x27;您存储的数字：&#x27;</span> + myContract.getNumber.call() + <span class="string">&#x27;&lt;br&gt; 操作：读取数字&#x27;</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>对于 jQuery，简单的语法是利用 <code>$(&quot;#id&quot;)</code> 选中 HTML 对应 ID 的内容，在此是按钮类型。按钮类型具有 <code>click()</code> 方法，我们在内部写出一个函数，意思是“如果按钮被按下，那么执行这个函数，函数的内容是使用合约内的 setNumber() 函数，函数的参数是 HTML 中 ID 为 data 的元素的值”。对于下面获得值的操作，同理。 </p>
-<p>再来看看怎么监听我们发出的事件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventSet = myContract.numberSetted()</span><br><span class="line">eventSet.watch(<span class="function"><span class="keyword">function</span>(<span class="params">error, result</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="title">if</span>(<span class="params">!error</span>)</span> &#123;</span><br><span class="line">        $(<span class="string">&quot;#info&quot;</span>).html(<span class="string">&#x27;您的地址：&#x27;</span> + result.args.addr + <span class="string">&#x27;&lt;br&gt;&#x27;</span> + <span class="string">&#x27;您存储的数字：&#x27;</span> + result.args.num</span><br><span class="line">        + <span class="string">&#x27;&lt;br&gt;&#x27;</span> + <span class="string">&#x27;操作：设置数字&#x27;</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(result)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(error)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>基本原理同以上相同，我们将合约的 numberSetted 事件声明成一个变量，对这个变量进行 watch() 方法。里面的函数和刚才的差不多，它具有了两个参数。因为 web3 要求我们进行异常处理，即需要有 <code>if(!error) &#123;&#125; elese &#123;&#125;</code> 的形式。另一个参数 <code>result</code> 里面包含了我们在 Solidity 中写过的两个返回值。如果不太明白，可以在浏览器打开控制台观察一下 <code>log</code>，会完整展现 <code>result</code> 的结构。</p>
-<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://s2.loli.net/2022/03/29/9HjxGlDdiQqRuUv.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/29/9HjxGlDdiQqRuUv.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="网页的样子"></div><span class="image-caption">网页的样子</span></div>
+    <p>Java 代码以类为基础。在编译时，每个类都会生成一个<code>.class</code>文件，其中用16进制字节码保存了JVM运行程序需要的各种信息。虚拟机读取信息，就可以执行程序。根据这个原理，我们可以用 Java 写一个 Java 虚拟机，这真是太有趣了（棒读）。</p>
+<p>本程序使用 OpenJDK 1.8，使用 Gradle 构建并使用了 lombok 插件。如果使用IDEA，请在手动在项目设置里修改为 OpenJDK 1.8；提到的 lombok 插件非常便利，在自己编写程序时也有多次用到，比如最简单的应用是可以在抛出异常的地方写一个 <code>@SneakyThrow</code>，这样程序员就不用麻烦的为一个自己无法处理的异常写一个 <code>try-catch</code> 包裹了。</p>
+<h2 id="Java-字节码"><a href="#Java-字节码" class="headerlink" title="Java 字节码"></a>Java 字节码</h2><div class="story post-story"><p>在一切开始之前，我们需要先了解 Java 字节码的结构。你可以用任何16进制编辑器查看<code>.class</code>文件，或者你可以使用<code>javap $&#123;target&#125; -verbose</code>来用人类可以读懂的方式查看其内容。下图展示了<code>.class</code>文件顺序排列的结构。一个固定长度的小块块代表了一个 Byte。</p>
+<div class="img-wrap"><div class="img-bg"><img class="img lazyload" src="https://s2.loli.net/2022/05/10/gnfljGtIoRTBwQN.png" class="lazyload" data-srcset="https://s2.loli.net/2022/05/10/gnfljGtIoRTBwQN.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="字节码结构示意图"></div><span class="image-caption">字节码结构示意图</span></div>
 
-</div><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><div class="story post-story"><p>目前我们的前端已经可以在本地运行了。不过像这样直接链接私有链，利用索引选择调用合约的用户以及函数的处理方式都非常原始，只能作演示用。之后会尽量设计更完善的代码。</p>
+<h3 id="魔数和版本号"><a href="#魔数和版本号" class="headerlink" title="魔数和版本号"></a>魔数和版本号</h3><p>最开始的魔数 <code>0xCAFEBABE</code>，或者 3405691582 (int)，标志着这是一个 Java 虚拟机可运行的字节码文件，真是独特（Cafe Babe = 看板娘？）。接下来两个 short 存储了编译的副、主版本号。JVM在执行的时候也会检查自己能否运行该版本号的字节码。</p>
+<h3 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h3><p>首先，常量池计数器占用一个 short。它记录了 <code>cp_info</code> 即常量池项的个数，注意到常量池计数器是从1开始的，所以常量池项将会有<code>constant_pool_count - 1</code>个，因为偶尔会需要有一个引用“不指向任何常量”，即索引0。又注意到计数器因为是16比特存储，因此常量个数不能超过65534个（如果你在一个类里面写了这么多常量，那你应该思考一下设计模式）。</p>
+<p>随其后的是不定长度的常量池数据区。如果它不定长度，那么我们如何读取呢？请打开我们的<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jvms/se8/jvms8.pdf">手册</a>并翻到4.4节常量池。我们可以看到，每个 <code>cp_info</code> 的结构是：</p>
+<figure class="highlight c"><figcaption><span>cp_info</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp_info &#123;</span><br><span class="line">    u1 tag;</span><br><span class="line">    u1 info[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据一个字节的类型标记，我们可以<code>info[]</code>到底是什么。比如，一个<code>CONSTANT_Utf8_info</code>结构，即字面常量结构在4.4.7被介绍，其结构如下：</p>
+<figure class="highlight c"><figcaption><span>CONSTANT_Utf8_info</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CONSTANT_Utf8_info &#123;</span><br><span class="line">    u1 tag;</span><br><span class="line">    u2 length;</span><br><span class="line">    u1 bytes[length];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据这个原理，我们每次首先判断其是什么类型，再按照类型读取数据。</p>
+<h3 id="访问标志"><a href="#访问标志" class="headerlink" title="访问标志"></a>访问标志</h3><h3 id="类索引与父类索引"><a href="#类索引与父类索引" class="headerlink" title="类索引与父类索引"></a>类索引与父类索引</h3><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h3 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h3><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3></div><h2 id="程序框架"><a href="#程序框架" class="headerlink" title="程序框架"></a>程序框架</h2><div class="story post-story"><p>在 VJVM 项目的<code>src</code>目录中存放了所有的程序源代码，我们可以先观察一下其结构。不需要关心的部分被我去掉了。</p>
+<figure class="highlight plain"><figcaption><span>Source File Tree</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">├── main</span><br><span class="line">│   └── java</span><br><span class="line">│       └── vjvm</span><br><span class="line">│           ├── classfiledefs</span><br><span class="line">│           │   ├── ...</span><br><span class="line">│           ├── classloader</span><br><span class="line">│           │   ├── JClassLoader.java</span><br><span class="line">│           │   └── searchpath</span><br><span class="line">│           │       ├── ClassSearchPath.java</span><br><span class="line">│           │       └── ModuleSearchPath.java</span><br><span class="line">│           ├── runtime</span><br><span class="line">│           │   ├── JClass.java</span><br><span class="line">│           │   └── classdata</span><br><span class="line">│           │       ├── ConstantPool.java</span><br><span class="line">│           │       ├── FieldInfo.java</span><br><span class="line">│           │       ├── MethodInfo.java</span><br><span class="line">│           │       ├── attribute</span><br><span class="line">│           │       │   ├── ...</span><br><span class="line">│           │       └── constant</span><br><span class="line">│           │           ├── ClassConstant.java</span><br><span class="line">│           │           ├── ...</span><br><span class="line">│           │           └── UnknownConstant.java</span><br><span class="line">│           ├── utils</span><br><span class="line">│           │   └── UnimplementedError.java</span><br><span class="line">│           └── vm</span><br><span class="line">│               ├── Main.java</span><br><span class="line">│               └── VMContext.java</span><br><span class="line">└── test</span><br><span class="line">    └── ...</span><br></pre></td></tr></table></figure>
+<p>我们首先从目录<code>main/java/vjvm/vm</code>看起。这里有程序的入口，我们可以暂不关心。构造 VJVM 的程序员使用了 lombok 来简化程序的使用，我们可以理解为编译好程序运行后为其提供一些参数，由程序入口来处理。接下来 VMContext 就是接收查找目录并生成类加载器实例。</p>
+<p>所以，我们来看<code>main/java/vjvm/classloader</code>，即类加载器。我们可以看到该目录下还有一个<code>searchpath</code>，我们合理的推测其是类加载器的成员。因为我们可能到运行时才知道我们需要从何处，比如文件内或是jar包内，或者是其他情况。因此需要动态绑定，面向接口编程。</p>
+<p>JClassLoader 在对应路径加载到编译好的类文件后，其用得到的文件，根据代码实际内容来看是 <code>DataInputStream</code> 类型，即二进制数据流，和其本身创建一个 JClass。这带领我们来到<code>main/java/vjvm/classdata</code>目录。在这里我们需要实现读取一个类的内容。根据之前字节码的介绍，比较棘手的是常量池，字段方法属性信息等等。</p>
+<p>其他有省略号的文件均不是本次 Lab 需要考虑的内容。</p>
+</div><h2 id="构造查找类文件的代码"><a href="#构造查找类文件的代码" class="headerlink" title="构造查找类文件的代码"></a>构造查找类文件的代码</h2><div class="story post-story"><p>待更新。</p>
+</div><h2 id="构造读取字节码内容的代码"><a href="#构造读取字节码内容的代码" class="headerlink" title="构造读取字节码内容的代码"></a>构造读取字节码内容的代码</h2><div class="story post-story"><p>待更新。</p>
 
 </div>
   </div>
@@ -2586,10 +2580,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-04-05T00:04:28+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-05-10T15:31:12+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年4月5日</p>
+    <p>更新于：2022年5月10日</p>
   </a>
 </div>
 
@@ -2598,8 +2592,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Ethereum/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Ethereum</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Solidity/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Solidity</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>智能合约</p></a></div>
-  <span hidden itemprop="keywords">Ethereum Solidity 智能合约</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>面向对象</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Java-Virtual-Machine/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Java Virtual Machine</p></a></div>
+  <span hidden itemprop="keywords">Java 面向对象 Java Virtual Machine</span>
 
 
         
@@ -2639,18 +2633,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/Programming/solidity-formal-specification/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Solidity 语言的形式化规约</p>
-          <p class='content'>智能合约与其他软件一样容易有错误和漏洞。在以太坊环境下，任何错误都伴随着潜在的对金融的破坏性结果。因此引入了形式化规约来验证操作。形式化规约存在相当多的形式，并拥有严谨的数学证明来描述系统行为，...</p>
-        </a>
       
-      
-        <a class='next' href='/Note/algorithm-0/'>
-          <p class='title'>算法题记录 - 键盘测试<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>羊羊买了新键盘，并邀请大家来试用键盘，但前提是回答出以下问题。
-
-您将获得两个字符串s和t，两者都由小写的英文字母组成。您将逐个字符地键入字符串s，从第一个字符到最后一个字符。
-特别之处在于，键...</p>
+        <a class='next' href='/Programming/design-pattern-1/'>
+          <p class='title'>设计模式：观察者模式与装饰者模式<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>通过自己举出的一些设计例子，配合代码，学习观察者模式和装饰者模式。这篇文章包含了两个不相关的内容，分别对应书上两个不同的章节。
+观察者模式假设目前我们有一位教务处老师，这位老师希望同学们帮他制作...</p>
         </a>
       
     </div>
@@ -2666,7 +2653,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/Programming/smart-contract/index.html#comments">
+      <meta itemprop="discussionUrl" content="/Programming/vjvm-lab1/index.html#comments">
     </span>
     <p ct><i class='fas fa-comments'></i> 评论</p>
     
@@ -2699,7 +2686,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Remix-%E5%92%8C-Ganache"><span class="toc-text">使用 Remix 和 Ganache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solidity-%E4%BB%A3%E7%A0%81"><span class="toc-text">Solidity 代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-%E4%BB%A3%E7%A0%81"><span class="toc-text">Web 代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E5%AD%97%E8%8A%82%E7%A0%81"><span class="toc-text">Java 字节码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AD%94%E6%95%B0%E5%92%8C%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-text">魔数和版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="toc-text">常量池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E6%A0%87%E5%BF%97"><span class="toc-text">访问标志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%B4%A2%E5%BC%95%E4%B8%8E%E7%88%B6%E7%B1%BB%E7%B4%A2%E5%BC%95"><span class="toc-text">类索引与父类索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-text">接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E6%AE%B5"><span class="toc-text">字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-text">属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6"><span class="toc-text">程序框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%9F%A5%E6%89%BE%E7%B1%BB%E6%96%87%E4%BB%B6%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">构造查找类文件的代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E8%AF%BB%E5%8F%96%E5%AD%97%E8%8A%82%E7%A0%81%E5%86%85%E5%AE%B9%E7%9A%84%E4%BB%A3%E7%A0%81"><span class="toc-text">构造读取字节码内容的代码</span></a></li></ol>
     </div>
   </section>
 
@@ -2790,7 +2777,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="简单的以太坊智能合约部署";
+  pdata.postTitle="构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2879,7 +2866,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1652167896291.js"></script>
+<script src="/js/app.js?time=1652167896284.js"></script>
 
 
 
@@ -3071,7 +3058,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1652167896291')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1652167896284')</script>
 
 
 
@@ -3200,19 +3187,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1652167896291")
+        volantis.js("/js/plugins/sites.js?time=1652167896284")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1652167896291")
+        volantis.js("/js/plugins/friends.js?time=1652167896284")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1652167896291")
+        volantis.js("/js/plugins/contributors.js?time=1652167896284")
       }
     
   };
@@ -3339,7 +3326,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1652167896291");
+    return volantis.js("/js/search/hexo.js?time=1652167896284");
   }
 
   function loadSearchService() {
@@ -3630,7 +3617,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/smart-contract/","name":"简单的以太坊智能合约部署"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"简单的以太坊智能合约部署","description":"基于 Solidity 合约语言和本地私有链，部署简易的以太坊智能合约的记录。","datePublished":"2022-03-29T02:49:53.000Z","dateModified":"2022-04-04T16:04:28.276Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/smart-contract/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/smart-contract/","wordCount":39,"articleSection":"Programming","keywords":"Ethereum,Solidity,智能合约","image":{"@type":"ImageObject","url":"https://s2.loli.net/2022/04/01/oUPnerwfjpdmLah.png","width":1024,"height":768}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/vjvm-lab1/","name":"构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)","description":"本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。","datePublished":"2022-05-10T06:02:27.000Z","dateModified":"2022-05-10T07:31:12.446Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/vjvm-lab1/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/vjvm-lab1/","wordCount":94,"articleSection":"Programming","keywords":"Java,面向对象,Java Virtual Machine","image":{"@type":"ImageObject","url":"https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png","width":1024,"height":768}}]</script>
 
 
 <!-- more -->
