@@ -20,7 +20,7 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1653553094085" as="style">
+  <link rel="preload" href="/css/style.css?time=1654415706610" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2022-05-10T06:02:27.000Z">
-<meta property="article:modified_time" content="2022-05-26T08:18:03.577Z">
+<meta property="article:modified_time" content="2022-06-05T07:54:55.828Z">
 <meta property="article:author" content="Yang">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="面向对象">
@@ -1697,8 +1697,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1653553094085" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1653553094085"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1654415706610" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1654415706610"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1775,9 +1775,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1653553094085","sites":"/js/plugins/sites.js?time=1653553094085","friends":"/js/plugins/friends.js?time=1653553094085","parallax":"/js/plugins/parallax.js?time=1653553094085","rightMenu":"/js/plugins/rightMenu.js?time=1653553094085","contributors":"/js/plugins/contributors.js?time=1653553094085","message":"/js/thirdparty/message.js?time=1653553094085","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1653553094085","search":"/js/search/hexo.js?time=1653553094085"},"css":{"style":"/css/style.css?time=1653553094085","message":"/css/message.css?time=1653553094085"}},
+    cdn: {"js":{"app":"/js/app.js?time=1654415706610","sites":"/js/plugins/sites.js?time=1654415706610","friends":"/js/plugins/friends.js?time=1654415706610","parallax":"/js/plugins/parallax.js?time=1654415706610","rightMenu":"/js/plugins/rightMenu.js?time=1654415706610","contributors":"/js/plugins/contributors.js?time=1654415706610","message":"/js/thirdparty/message.js?time=1654415706610","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1654415706610","search":"/js/search/hexo.js?time=1654415706610"},"css":{"style":"/css/style.css?time=1654415706610","message":"/css/message.css?time=1654415706610"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Thu May 26 2022 16:18:14 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Sun Jun 05 2022 15:55:06 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2555,11 +2555,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="类索引与父类索引"><a href="#类索引与父类索引" class="headerlink" title="类索引与父类索引"></a>类索引与父类索引</h3><p>这里的类索引和父类索引都分别占有两个字节，存储一个指向常量池中<code>CONSTANT_Class_info</code>的索引。</p>
 <h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>首先具有接口数量信息，接着有该数量个接口数据信息。注意接口数据信息只是一个两字节的，指向常量池中<code>CONSTANT_Class_info</code>的索引。</p>
 <h3 id="字段与方法"><a href="#字段与方法" class="headerlink" title="字段与方法"></a>字段与方法</h3><p>字段和方法相当类似，其开头都会有一个计数器，而后跟随一串数据，这些数据拥有这样的结构：</p>
-<figure class="highlight c"><figcaption><span>field_info</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">field_info &#123;</span><br><span class="line">    u2 access_flags;</span><br><span class="line">    u2 name_index;</span><br><span class="line">    u2 descriptor_index;</span><br><span class="line">    u2 attributes_count;</span><br><span class="line">    attribute info attributes[attributes_count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>method_info</code>也是一模一样的。我们可以看到一个字段或方法拥有访问标志，具有其名字和描述符索引，属性计数器等。</p>
+<figure class="highlight c"><figcaption><span>field_info</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">field_info &#123;</span><br><span class="line">    u2 access_flags;</span><br><span class="line">    u2 name_index;</span><br><span class="line">    u2 descriptor_index;</span><br><span class="line">    u2 attributes_count;</span><br><span class="line">    attribute_info attributes[attributes_count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>method_info</code>也是一模一样的。我们可以看到一个字段或方法拥有访问标志，具有其名字和描述符索引，属性计数器和属性等。</p>
+<p>我们必须注意到的是，这个结构中也具有“属性”这个结构，即<code>attribute_info</code>。也就是说字段、方法和类文件都具有属性。实际上，方法是如何被执行的，即JVM的字节操作码就记录在<code>method_info</code>里的<code>attribute_info</code>内，并且其具体的属性是<code>Code</code>。</p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>我们暂时不需要关心属性(attribute)的部分，但是我还是把其结构表示出来：</p>
 <figure class="highlight c"><figcaption><span>attribute_info</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">attribute_info &#123;</span><br><span class="line">    u2 attribute_name_index;</span><br><span class="line">    u4 attribute_length;</span><br><span class="line">    u1 info[attribute_length];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在写代码的时候会用到。</p>
+<p>在写代码的时候会用到，并且之后实现真正运行程序的时候也是必要的。除了上面提到的<code>Code</code>属性以外，还存在常量<code>ConstantValue</code>，异常<code>Exception</code>等等。</p>
 </div><h2 id="程序框架"><a href="#程序框架" class="headerlink" title="程序框架"></a>程序框架</h2><div class="story post-story"><p>在 VJVM 项目的<code>src</code>目录中存放了所有的程序源代码，我们可以先观察一下其结构。不需要关心的部分被我去掉了。</p>
 <figure class="highlight plain"><figcaption><span>Source File Tree</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">src</span><br><span class="line">├── main</span><br><span class="line">│   └── java</span><br><span class="line">│       └── vjvm</span><br><span class="line">│           ├── classfiledefs</span><br><span class="line">│           │   ├── ...</span><br><span class="line">│           ├── classloader</span><br><span class="line">│           │   ├── JClassLoader.java</span><br><span class="line">│           │   └── searchpath</span><br><span class="line">│           │       ├── ClassSearchPath.java</span><br><span class="line">│           │       └── ModuleSearchPath.java</span><br><span class="line">│           ├── runtime</span><br><span class="line">│           │   ├── JClass.java</span><br><span class="line">│           │   └── classdata</span><br><span class="line">│           │       ├── ConstantPool.java</span><br><span class="line">│           │       ├── FieldInfo.java</span><br><span class="line">│           │       ├── MethodInfo.java</span><br><span class="line">│           │       ├── attribute</span><br><span class="line">│           │       │   ├── ...</span><br><span class="line">│           │       └── constant</span><br><span class="line">│           │           ├── ClassConstant.java</span><br><span class="line">│           │           ├── ...</span><br><span class="line">│           │           └── UnknownConstant.java</span><br><span class="line">│           ├── utils</span><br><span class="line">│           │   └── UnimplementedError.java</span><br><span class="line">│           └── vm</span><br><span class="line">│               ├── Main.java</span><br><span class="line">│               └── VMContext.java</span><br><span class="line">└── test</span><br><span class="line">    └── ...</span><br></pre></td></tr></table></figure>
 <p>我们首先从目录<code>main/java/vjvm/vm</code>看起。这里有程序的入口，我们可以暂不关心。构造 VJVM 的程序员使用了 lombok 来简化程序的使用，我们可以理解为编译好程序运行后为其提供一些参数，由程序入口来处理。接下来 VMContext 就是接收查找目录并生成类加载器实例。</p>
@@ -2615,10 +2616,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-05-26T16:18:03+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2022-06-05T15:54:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年5月26日</p>
+    <p>更新于：2022年6月5日</p>
   </a>
 </div>
 
@@ -2906,7 +2907,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1653553094085.js"></script>
+<script src="/js/app.js?time=1654415706610.js"></script>
 
 
 
@@ -3098,7 +3099,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1653553094085')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1654415706610')</script>
 
 
 
@@ -3227,19 +3228,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1653553094085")
+        volantis.js("/js/plugins/sites.js?time=1654415706610")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1653553094085")
+        volantis.js("/js/plugins/friends.js?time=1654415706610")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1653553094085")
+        volantis.js("/js/plugins/contributors.js?time=1654415706610")
       }
     
   };
@@ -3366,7 +3367,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1653553094085");
+    return volantis.js("/js/search/hexo.js?time=1654415706610");
   }
 
   function loadSearchService() {
@@ -3657,7 +3658,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/vjvm-lab1/","name":"构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)","description":"本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。","datePublished":"2022-05-10T06:02:27.000Z","dateModified":"2022-05-26T08:18:03.577Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/vjvm-lab1/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/vjvm-lab1/","wordCount":94,"articleSection":"Programming","keywords":"Java,面向对象,Java Virtual Machine","image":{"@type":"ImageObject","url":"https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png","width":1024,"height":768}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/vjvm-lab1/","name":"构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)","description":"本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。","datePublished":"2022-05-10T06:02:27.000Z","dateModified":"2022-06-05T07:54:55.828Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/vjvm-lab1/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/vjvm-lab1/","wordCount":94,"articleSection":"Programming","keywords":"Java,面向对象,Java Virtual Machine","image":{"@type":"ImageObject","url":"https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png","width":1024,"height":768}}]</script>
 
 
 <!-- more -->
