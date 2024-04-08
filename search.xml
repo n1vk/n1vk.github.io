@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>基于Golang的后端高性能框架 —— Gin</title>
+      <link href="Programming/learn-gin/"/>
+      <url>Programming/learn-gin/</url>
+      
+        <content type="html"><![CDATA[<h2 id="使用-Gin"><a href="#使用-Gin" class="headerlink" title="使用 Gin"></a>使用 Gin</h2><div class="story post-story"><h2 id="关于-Middleware"><a href="#关于-Middleware" class="headerlink" title="关于 Middleware"></a>关于 Middleware</h2><h2 id="Gin-原理"><a href="#Gin-原理" class="headerlink" title="Gin 原理"></a>Gin 原理</h2></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+            <tag> Gin </tag>
+            
+            <tag> 后端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>子网还是专用网？我混淆了分类网和网络地址转换</title>
       <link href="Note/subnets-and-nat/"/>
       <url>Note/subnets-and-nat/</url>

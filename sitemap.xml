@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://n1vk.github.io/Programming/learn-gin/</loc>
+    
+    <lastmod>2024-04-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://n1vk.github.io/Programming/vjvm-lab1/</loc>
     
     <lastmod>2022-06-05</lastmod>
@@ -112,7 +121,7 @@
 
   <url>
     <loc>https://n1vk.github.io/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -120,98 +129,119 @@
   
   <url>
     <loc>https://n1vk.github.io/tags/Python/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/Java/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/Golang/</loc>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/Gin/</loc>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E6%83%B3%E6%B3%95/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/Ethereum/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/Solidity/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/tags/Java-Virtual-Machine/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -220,21 +250,21 @@
   
   <url>
     <loc>https://n1vk.github.io/categories/Note/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/categories/Programming/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://n1vk.github.io/categories/Thoughts/</loc>
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
