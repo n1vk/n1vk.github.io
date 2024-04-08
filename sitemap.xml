@@ -2,7 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://n1vk.github.io/Programming/learn-gin/</loc>
+    <loc>https://n1vk.github.io/Programming/controlling-goroutines/</loc>
+    
+    <lastmod>2024-04-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/Note/subnets-and-nat/</loc>
+    
+    <lastmod>2024-04-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/Programming/design-pattern-0/</loc>
+    
+    <lastmod>2024-04-08</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/Programming/design-pattern-1/</loc>
     
     <lastmod>2024-04-08</lastmod>
     
@@ -13,16 +40,16 @@
   <url>
     <loc>https://n1vk.github.io/Programming/vjvm-lab1/</loc>
     
-    <lastmod>2022-06-05</lastmod>
+    <lastmod>2024-04-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://n1vk.github.io/Note/subnets-and-nat/</loc>
+    <loc>https://n1vk.github.io/Programming/learn-gin/</loc>
     
-    <lastmod>2022-05-25</lastmod>
+    <lastmod>2024-04-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -32,24 +59,6 @@
     <loc>https://n1vk.github.io/googlea872b2bca8f19498.html</loc>
     
     <lastmod>2022-04-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://n1vk.github.io/Programming/design-pattern-1/</loc>
-    
-    <lastmod>2022-04-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://n1vk.github.io/Programming/design-pattern-0/</loc>
-    
-    <lastmod>2022-04-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -177,14 +186,14 @@
   </url>
   
   <url>
-    <loc>https://n1vk.github.io/tags/Gin/</loc>
+    <loc>https://n1vk.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://n1vk.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
+    <loc>https://n1vk.github.io/tags/Goroutine/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -206,6 +215,13 @@
   
   <url>
     <loc>https://n1vk.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/Gin/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

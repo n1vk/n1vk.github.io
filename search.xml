@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Goroutines 的调度与并发控制</title>
+      <link href="Programming/controlling-goroutines/"/>
+      <url>Programming/controlling-goroutines/</url>
+      
+        <content type="html"><![CDATA[<h2 id="GMP-模型"><a href="#GMP-模型" class="headerlink" title="GMP 模型"></a>GMP 模型</h2><div class="story post-story"><p>GMP模型的原理不再多讲，处理器（P）通过维护自己的队列拿到需要执行的协程（G）并绑定到线程（M）。常见的GMP知识点不外乎全局队列，M0G0的知识，工作偷取和P遇到自旋M就解绑定并寻找新的M。</p><p>需要注意的一点是G，M与P的数量。G的数量理论上是无限的，但与程序自身的内存有关；P的数量是<code>runtime.GOMAXPROCS</code>控制的，注意这里是运行时宏；而M的数量就是操作系统相关的知识了，也同样受到资源的限制（题外话，进程数量受什么控制？）。</p></div><h2 id="main-等等我的-Goroutine"><a href="#main-等等我的-Goroutine" class="headerlink" title="main, 等等我的 Goroutine"></a>main, 等等我的 Goroutine</h2><div class="story post-story"><p>我们知道 Go 的一切都是 Goroutine 在跑，那么我们的主函数实际上也是跑在一个 Goroutine 里的，只不过这个Goroutine比较特殊，被标记为main Goroutine（废话）。那么我们用户创建这些 Goroutine 何时退出呢？</p><ul><li><p>进程被 Kill / 进程崩溃</p><p>显然这个时候所有的 G 都会退出，毕竟系统资源都没了。</p></li><li><p>main函数结束</p><p>这个时候所有的 G 的资源也会被收回。</p></li><li><p>主动退出</p><p>正常执行完毕 / return / 使用 Context, 这个比较复杂之后特地讲 / panic（不要用）</p></li></ul><p>然而main Goroutine 可不会在乎你创建的 G 是否执行完了。怎么确保我们创建的G能够执行完再让 main G退出呢？</p><h3 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h3><p>对于一个比较简单的G，我们直接创建一个无缓冲区管道阻塞一下即可。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">    ch &lt;- <span class="string">&quot;Done&quot;</span></span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  data := &lt;-ch</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>显然这种办法比较低级，如果我需要开启不定数量的 G，这种办法就不好用了（吗？实际上开一个有缓冲区的channel也可以，而且能控制同时运行的 G 的数量）。</p><h3 id="sync-Waitgroup"><a href="#sync-Waitgroup" class="headerlink" title="sync.Waitgroup"></a>sync.Waitgroup</h3><p>这是官方给我们用来控制并发流程的。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> wg sync.WaitGroup <span class="comment">// 声明这个结构, 如果要传到函数里记得指针</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// wg.Add(100) Add其实就是要执行的任务数量，直接在这加也行</span></span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">    wg.Add(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">      <span class="comment">// [注意] wg.Add(1) 不能写在这，写了 linter 也会报错的</span></span><br><span class="line">      <span class="comment">// 因为可能当前还没有 wg.Add(1), wg.Wait() 的逻辑已经通过了 </span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 函数逻辑</span></span><br><span class="line">      wg.Done() <span class="comment">// 做好了</span></span><br><span class="line">    &#125;()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  wg.Wait()<span class="comment">// 等待结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><h2 id="Goroutine-更详细的顺序"><a href="#Goroutine-更详细的顺序" class="headerlink" title="Goroutine 更详细的顺序"></a>Goroutine 更详细的顺序</h2><div class="story post-story"><p>运行一下这段代码：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    runtime.GOMAXPROCS(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        i := i</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            fmt.Println(i)</span><br><span class="line">        &#125;()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ch = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    &lt;- ch<span class="comment">// 这里阻塞会 fatal error, 因为死锁了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>我们控制P的数量是1，并<strong>看似</strong>从0到9创建了一堆G。但实际上，程序的输出是：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure><p>哇，太棒了。为什么会这样？这就必须讲一下 GMP 模型中的三个队列了。</p><h3 id="三个队列"><a href="#三个队列" class="headerlink" title="三个队列"></a>三个队列</h3><p>每个P所拥有的队列大概是这样：<code>runnext</code>，<code>local</code>。以及程序本身有一个<code>global</code>。</p><p>每次创建G的时候，G会首先抢占 <code>runnext</code>。这确保了如果有很多P的话，G会被优先执行，不会有空闲的P，这太浪费资源了。<code>runnext</code>只有一个空位，从名字也能看懂这是P要绑定给M的那个G。但如果有一个新来的G呢？old G就会被new G挤走，到<code>local</code>队列的末尾，下一个调用。这也是为了每个G都能被执行。</p><p><code>local</code>队列最长256，是一个环形队列，头尾指针控制。如果这玩意也满了G就会去<code>global</code>。当然如果空了就会偷取，不再多谈。</p><p>因此这样输出什么情况就很明显了，因为IO操作很慢，因此最后出现的G也就是9抢占了<code>runnext</code>进行执行，而剩下的G则以0～8的方式从<code>local</code>中取出来执行，就有了上面的输出。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+            <tag> 后端 </tag>
+            
+            <tag> Goroutine </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于Golang的后端高性能框架 —— Gin</title>
       <link href="Programming/learn-gin/"/>
       <url>Programming/learn-gin/</url>
@@ -22,9 +51,9 @@
             
             <tag> Golang </tag>
             
-            <tag> Gin </tag>
-            
             <tag> 后端 </tag>
+            
+            <tag> Gin </tag>
             
         </tags>
       
@@ -33,7 +62,7 @@
     
     
     <entry>
-      <title>子网还是专用网？我混淆了分类网和网络地址转换</title>
+      <title>浅浅区分一下分类网和网络地址转换</title>
       <link href="Note/subnets-and-nat/"/>
       <url>Note/subnets-and-nat/</url>
       
@@ -58,7 +87,7 @@
     
     
     <entry>
-      <title>构造玩具版 Java 虚拟机 Lab1 - 软件工程课程作业 (待更新)</title>
+      <title>构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1</title>
       <link href="Programming/vjvm-lab1/"/>
       <url>Programming/vjvm-lab1/</url>
       

@@ -20,27 +20,27 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1712587010928" as="style">
+  <link rel="preload" href="/css/style.css?time=1712590152973" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
   <title>基于Golang的后端高性能框架 —— Gin - Sheep's Blog</title>
-  <meta name="keywords" content="Golang,Gin,后端,null">
-  <meta name="description" content="Gin的基本用法和值得记录的原理">
+  <meta name="keywords" content="Golang,后端,Gin,null">
+  <meta name="description" content="Gin的基本用法和值得记录的原理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Golang的后端高性能框架 —— Gin">
 <meta property="og:url" content="https://n1vk.github.io/Programming/learn-gin/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
-<meta property="og:description" content="Gin的基本用法和值得记录的原理">
+<meta property="og:description" content="Gin的基本用法和值得记录的原理。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-02-27T12:28:19.000Z">
-<meta property="article:modified_time" content="2024-04-08T14:35:46.980Z">
+<meta property="article:modified_time" content="2024-04-08T14:44:21.339Z">
 <meta property="article:author" content="Yang">
 <meta property="article:tag" content="Golang">
-<meta property="article:tag" content="Gin">
 <meta property="article:tag" content="后端">
+<meta property="article:tag" content="Gin">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1697,8 +1697,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1712587010928" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1712587010928"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1712590152973" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1712590152973"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1775,9 +1775,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1712587010928","sites":"/js/plugins/sites.js?time=1712587010928","friends":"/js/plugins/friends.js?time=1712587010928","parallax":"/js/plugins/parallax.js?time=1712587010928","rightMenu":"/js/plugins/rightMenu.js?time=1712587010928","contributors":"/js/plugins/contributors.js?time=1712587010928","message":"/js/thirdparty/message.js?time=1712587010928","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712587010928","search":"/js/search/hexo.js?time=1712587010928"},"css":{"style":"/css/style.css?time=1712587010928","message":"/css/message.css?time=1712587010928"}},
+    cdn: {"js":{"app":"/js/app.js?time=1712590152973","sites":"/js/plugins/sites.js?time=1712590152973","friends":"/js/plugins/friends.js?time=1712590152973","parallax":"/js/plugins/parallax.js?time=1712590152973","rightMenu":"/js/plugins/rightMenu.js?time=1712590152973","contributors":"/js/plugins/contributors.js?time=1712590152973","message":"/js/thirdparty/message.js?time=1712590152973","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712590152973","search":"/js/search/hexo.js?time=1712590152973"},"css":{"style":"/css/style.css?time=1712590152973","message":"/css/message.css?time=1712590152973"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Mon Apr 08 2024 22:36:50 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Mon Apr 08 2024 23:29:12 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2405,8 +2405,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <p class="title">羊羊的博客</p>
     
     
-      <p class="subtitle">互联网的微型孤岛</p>
-    
   </div>
   <div class='bottom'>
     
@@ -2558,7 +2556,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-08T22:35:46+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-08T22:44:21+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年4月8日</p>
@@ -2570,8 +2568,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Golang/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Golang</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Gin/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Gin</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%90%8E%E7%AB%AF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>后端</p></a></div>
-  <span hidden itemprop="keywords">Golang Gin 后端</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Golang/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Golang</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%90%8E%E7%AB%AF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>后端</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Gin/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Gin</p></a></div>
+  <span hidden itemprop="keywords">Golang 后端 Gin</span>
 
 
         
@@ -2611,9 +2609,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
+        <a class='prev' href='/Programming/controlling-goroutines/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Goroutines 的调度与并发控制</p>
+          <p class='content'>GMP 模型GMP模型的原理不再多讲，处理器（P）通过维护自己的队列拿到需要执行的协程（G）并绑定到线程（M）。常见的GMP知识点不外乎全局队列，M0G0的知识，工作偷取和P遇到自旋M就解绑定并...</p>
+        </a>
+      
       
         <a class='next' href='/Note/subnets-and-nat/'>
-          <p class='title'>子网还是专用网？我混淆了分类网和网络地址转换<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='title'>浅浅区分一下分类网和网络地址转换<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>在最初学习计算机网络的时候，我首先学习了IPv4编址方式，紧接着学习了子网，CIDR，路由聚合，IP地址获取与NAT。但在思考和与朋友讨论的过程中，我发现我混淆了一些概念。因此我做了一些调查，在...</p>
         </a>
       
@@ -2694,7 +2697,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Programming/" href="/categories/Programming/"
             active-action="action-categoriesProgramming"
-            ><div class='name'>Programming</div><div class='badge'>(6)</div></a></li>
+            ><div class='name'>Programming</div><div class='badge'>(7)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Thoughts/" href="/categories/Thoughts/"
@@ -2843,7 +2846,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1712587010928.js"></script>
+<script src="/js/app.js?time=1712590152973.js"></script>
 
 
 
@@ -3035,7 +3038,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1712587010928')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1712590152973')</script>
 
 
 
@@ -3164,19 +3167,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1712587010928")
+        volantis.js("/js/plugins/sites.js?time=1712590152973")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1712587010928")
+        volantis.js("/js/plugins/friends.js?time=1712590152973")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1712587010928")
+        volantis.js("/js/plugins/contributors.js?time=1712590152973")
       }
     
   };
@@ -3303,7 +3306,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1712587010928");
+    return volantis.js("/js/search/hexo.js?time=1712590152973");
   }
 
   function loadSearchService() {
@@ -3594,7 +3597,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/learn-gin/","name":"基于Golang的后端高性能框架 —— Gin"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"基于Golang的后端高性能框架 —— Gin","description":"Gin的基本用法和值得记录的原理","datePublished":"2023-02-27T12:28:19.000Z","dateModified":"2024-04-08T14:35:46.980Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/learn-gin/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/learn-gin/","wordCount":16,"articleSection":"Programming","keywords":"Golang,Gin,后端","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/learn-gin/","name":"基于Golang的后端高性能框架 —— Gin"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"基于Golang的后端高性能框架 —— Gin","description":"Gin的基本用法和值得记录的原理。","datePublished":"2023-02-27T12:28:19.000Z","dateModified":"2024-04-08T14:44:21.339Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/learn-gin/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/learn-gin/","wordCount":17,"articleSection":"Programming","keywords":"Golang,后端,Gin","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

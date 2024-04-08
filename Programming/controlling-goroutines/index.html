@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.2.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://n1vk.github.io/tags/java/"/>
+  
+  <link rel="canonical" href="https://n1vk.github.io/programming/controlling-goroutines/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,27 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1712590153027" as="style">
+  <link rel="preload" href="/css/style.css?time=1712590152971" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>标签：Java - Sheep's Blog</title>
-  <meta name="keywords" content="null">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sheep&#39;s Blog">
-<meta property="og:url" content="https://n1vk.github.io/tags/Java/index.html">
+  <title>Goroutines 的调度与并发控制 - Sheep's Blog</title>
+  <meta name="keywords" content="Golang,后端,Goroutine,null">
+  <meta name="description" content="Goroutine是如何调度的，如何在代码中操作其执行的顺序？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Goroutines 的调度与并发控制">
+<meta property="og:url" content="https://n1vk.github.io/Programming/controlling-goroutines/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
+<meta property="og:description" content="Goroutine是如何调度的，如何在代码中操作其执行的顺序？">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2024-04-08T14:38:56.000Z">
+<meta property="article:modified_time" content="2024-04-08T15:23:23.018Z">
 <meta property="article:author" content="Yang">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="Goroutine">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1690,8 +1697,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1712590153027" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1712590153027"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1712590152971" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1712590152971"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,9 +1775,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1712590153027","sites":"/js/plugins/sites.js?time=1712590153027","friends":"/js/plugins/friends.js?time=1712590153027","parallax":"/js/plugins/parallax.js?time=1712590153027","rightMenu":"/js/plugins/rightMenu.js?time=1712590153027","contributors":"/js/plugins/contributors.js?time=1712590153027","message":"/js/thirdparty/message.js?time=1712590153027","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712590153027","search":"/js/search/hexo.js?time=1712590153027"},"css":{"style":"/css/style.css?time=1712590153027","message":"/css/message.css?time=1712590153027"}},
+    cdn: {"js":{"app":"/js/app.js?time=1712590152971","sites":"/js/plugins/sites.js?time=1712590152971","friends":"/js/plugins/friends.js?time=1712590152971","parallax":"/js/plugins/parallax.js?time=1712590152971","rightMenu":"/js/plugins/rightMenu.js?time=1712590152971","contributors":"/js/plugins/contributors.js?time=1712590152971","message":"/js/thirdparty/message.js?time=1712590152971","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712590152971","search":"/js/search/hexo.js?time=1712590152971"},"css":{"style":"/css/style.css?time=1712590152971","message":"/css/message.css?time=1712590152971"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Mon Apr 08 2024 23:29:13 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Mon Apr 08 2024 23:29:12 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2387,7 +2394,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://s2.loli.net/2022/03/28/fiZlyxE3ROI9qaV.png"></div>
 
@@ -2455,29 +2462,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/vjvm-lab1/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/controlling-goroutines/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Sheep's Blog">
   </span>
@@ -2486,212 +2473,213 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/Programming/vjvm-lab1/">
-        <img itemprop="image" class='headimg' alt="构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1" src='https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/vjvm-lab1/"  itemprop="url">
-        构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-05-10T14:02:27+08:00">2022-05-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Programming/vjvm-lab1/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/design-pattern-1/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Sheep's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Sheep's Blog">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
   
     <span hidden>
       <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/design-pattern-1/"  itemprop="url">
-        设计模式：观察者模式与装饰者模式
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      学习 Head First Design Pattern 的第二部分的内容包括观察者(Observer)模式和装饰者(Decorator)模式。
+    
+      <h1 class="title" itemprop="name headline">
+        Goroutines 的调度与并发控制
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">羊羊</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Programming/">Programming</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-04-15T17:18:03+08:00">2022-04-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-04-08T22:38:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2024年4月8日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="GMP-模型"><a href="#GMP-模型" class="headerlink" title="GMP 模型"></a>GMP 模型</h2><div class="story post-story"><p>GMP模型的原理不再多讲，处理器（P）通过维护自己的队列拿到需要执行的协程（G）并绑定到线程（M）。常见的GMP知识点不外乎全局队列，M0G0的知识，工作偷取和P遇到自旋M就解绑定并寻找新的M。</p>
+<p>需要注意的一点是G，M与P的数量。G的数量理论上是无限的，但与程序自身的内存有关；P的数量是<code>runtime.GOMAXPROCS</code>控制的，注意这里是运行时宏；而M的数量就是操作系统相关的知识了，也同样受到资源的限制（题外话，进程数量受什么控制？）。</p>
+</div><h2 id="main-等等我的-Goroutine"><a href="#main-等等我的-Goroutine" class="headerlink" title="main, 等等我的 Goroutine"></a>main, 等等我的 Goroutine</h2><div class="story post-story"><p>我们知道 Go 的一切都是 Goroutine 在跑，那么我们的主函数实际上也是跑在一个 Goroutine 里的，只不过这个Goroutine比较特殊，被标记为main Goroutine（废话）。那么我们用户创建这些 Goroutine 何时退出呢？</p>
+<ul>
+<li><p>进程被 Kill / 进程崩溃</p>
+<p>显然这个时候所有的 G 都会退出，毕竟系统资源都没了。</p>
+</li>
+<li><p>main函数结束</p>
+<p>这个时候所有的 G 的资源也会被收回。</p>
+</li>
+<li><p>主动退出</p>
+<p>正常执行完毕 / return / 使用 Context, 这个比较复杂之后特地讲 / panic（不要用）</p>
+</li>
+</ul>
+<p>然而main Goroutine 可不会在乎你创建的 G 是否执行完了。怎么确保我们创建的G能够执行完再让 main G退出呢？</p>
+<h3 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h3><p>对于一个比较简单的G，我们直接创建一个无缓冲区管道阻塞一下即可。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">    ch &lt;- <span class="string">&quot;Done&quot;</span></span><br><span class="line">  &#125;()</span><br><span class="line">  </span><br><span class="line">  data := &lt;-ch</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>显然这种办法比较低级，如果我需要开启不定数量的 G，这种办法就不好用了（吗？实际上开一个有缓冲区的channel也可以，而且能控制同时运行的 G 的数量）。</p>
+<h3 id="sync-Waitgroup"><a href="#sync-Waitgroup" class="headerlink" title="sync.Waitgroup"></a>sync.Waitgroup</h3><p>这是官方给我们用来控制并发流程的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> wg sync.WaitGroup <span class="comment">// 声明这个结构, 如果要传到函数里记得指针</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// wg.Add(100) Add其实就是要执行的任务数量，直接在这加也行</span></span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">100</span>; i++ &#123;</span><br><span class="line">    wg.Add(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">      <span class="comment">// [注意] wg.Add(1) 不能写在这，写了 linter 也会报错的</span></span><br><span class="line">      <span class="comment">// 因为可能当前还没有 wg.Add(1), wg.Wait() 的逻辑已经通过了 </span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// 函数逻辑</span></span><br><span class="line">      wg.Done() <span class="comment">// 做好了</span></span><br><span class="line">    &#125;()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  wg.Wait()	<span class="comment">// 等待结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</div><h2 id="Goroutine-更详细的顺序"><a href="#Goroutine-更详细的顺序" class="headerlink" title="Goroutine 更详细的顺序"></a>Goroutine 更详细的顺序</h2><div class="story post-story"><p>运行一下这段代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    runtime.GOMAXPROCS(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        i := i</span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            fmt.Println(i)</span><br><span class="line">        &#125;()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ch = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    &lt;- ch	<span class="comment">// 这里阻塞会 fatal error, 因为死锁了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们控制P的数量是1，并<strong>看似</strong>从0到9创建了一堆G。但实际上，程序的输出是：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p>哇，太棒了。为什么会这样？这就必须讲一下 GMP 模型中的三个队列了。</p>
+<h3 id="三个队列"><a href="#三个队列" class="headerlink" title="三个队列"></a>三个队列</h3><p>每个P所拥有的队列大概是这样：<code>runnext</code>，<code>local</code>。以及程序本身有一个<code>global</code>。</p>
+<p>每次创建G的时候，G会首先抢占 <code>runnext</code>。这确保了如果有很多P的话，G会被优先执行，不会有空闲的P，这太浪费资源了。<code>runnext</code>只有一个空位，从名字也能看懂这是P要绑定给M的那个G。但如果有一个新来的G呢？old G就会被new G挤走，到<code>local</code>队列的末尾，下一个调用。这也是为了每个G都能被执行。</p>
+<p><code>local</code>队列最长256，是一个环形队列，头尾指针控制。如果这玩意也满了G就会去<code>global</code>。当然如果空了就会偷取，不再多谈。</p>
+<p>因此这样输出什么情况就很明显了，因为IO操作很慢，因此最后出现的G也就是9抢占了<code>runnext</code>进行执行，而剩下的G则以0～8的方式从<code>local</code>中取出来执行，就有了上面的输出。</p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/Programming/design-pattern-1/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+      
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-08T23:23:23+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年4月8日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/design-pattern-0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Sheep's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Sheep's Blog">
-    <meta itemprop="description" content="">
-  </span>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Golang/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Golang</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%90%8E%E7%AB%AF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>后端</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Goroutine/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Goroutine</p></a></div>
+  <span hidden itemprop="keywords">Golang 后端 Goroutine</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/Programming/learn-gin/'>
+          <p class='title'>基于Golang的后端高性能框架 —— Gin<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>使用 Gin关于 MiddlewareGin 原理
+</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+  
+  <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/Programming/controlling-goroutines/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/design-pattern-0/"  itemprop="url">
-        设计模式：基本思想与策略模式
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      学习 Head First Design Pattern，第一部分的内容包括初步认识设计模式，学习基本设计原则以及学习的第一个设计模式：策略(Strategy)模式。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-03-28T20:21:57+08:00">2022-03-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Programming/design-pattern-0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+    <div id="layoutHelper-comments"></div>
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
+  </article>
   
 
 
-    
-  
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2699,70 +2687,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://s2.loli.net/2022/03/28/EjCkWKOIRd5J8NZ.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>羊羊</h2>
-        
-        
-          <p>只是随处可见的羊<br></p>
 
-        
-        
-      </div>
+
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
     
+  <header>
     
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/EasterEgg/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
-  </div>
-</section>
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GMP-%E6%A8%A1%E5%9E%8B"><span class="toc-text">GMP 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#main-%E7%AD%89%E7%AD%89%E6%88%91%E7%9A%84-Goroutine"><span class="toc-text">main, 等等我的 Goroutine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#channel"><span class="toc-text">channel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sync-Waitgroup"><span class="toc-text">sync.Waitgroup</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Goroutine-%E6%9B%B4%E8%AF%A6%E7%BB%86%E7%9A%84%E9%A1%BA%E5%BA%8F"><span class="toc-text">Goroutine 更详细的顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E9%98%9F%E5%88%97"><span class="toc-text">三个队列</span></a></li></ol></li></ol>
+    </div>
+  </section>
 
   
 
@@ -2805,144 +2744,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
 
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Ethereum/" style="font-size: 19px; color: #777">Ethereum</a> <a href="/tags/Gin/" style="font-size: 14px; color: #999">Gin</a> <a href="/tags/Golang/" style="font-size: 19px; color: #777">Golang</a> <a href="/tags/Goroutine/" style="font-size: 14px; color: #999">Goroutine</a> <a href="/tags/Java/" style="font-size: 24px; color: #555">Java</a> <a href="/tags/Java-Virtual-Machine/" style="font-size: 14px; color: #999">Java Virtual Machine</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Solidity/" style="font-size: 19px; color: #777">Solidity</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">博客</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 19px; color: #777">后端</a> <a href="/tags/%E6%83%B3%E6%B3%95/" style="font-size: 14px; color: #999">想法</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 19px; color: #777">智能合约</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 24px; color: #555">程序设计</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">计算机网络</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 14px; color: #999">记录</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 19px; color: #777">设计模式</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 24px; color: #555">面向对象</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget grid shadow desktop mobile pjax">
-  
-  <header>
-    
-      <i class="fas fa-headset fa-fw" aria-hidden="true"></i><span class='name'>联系我</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://github.com/n1vk/"
-          
-          
-          active-action="action-https:githubcomn1vk">
-          
-            <i class="fab fa-github fa-fw" aria-hidden="true"></i>
-          
-          Github
-        </a>
-      
-        <a class="flat-box" href="/about"
-          
-          
-          active-action="action-about">
-          
-            <i class="fas fa-envelope-open-text fa-fw" aria-hidden="true"></i>
-          
-          电子邮件
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://t.me/woollen_wool"
-          
-          
-          active-action="action-https:tmewoollen_wool">
-          
-            <i class="fab fa-telegram fa-fw" aria-hidden="true"></i>
-          
-          Telegram
-        </a>
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop mobile pjax">
-  
-  <header>
-    
-      <i class="fas fa-globe-asia fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>10 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count"></div>
-        </div>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fa-solid fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fa-solid fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          <div id="last-update-show">2024-04-08 日</div> 
-        </div>
-      
-    </div>
-  </div>
-</section>
-
-  
-
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2967,14 +2782,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Goroutines 的调度与并发控制";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3063,7 +2879,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1712590153027.js"></script>
+<script src="/js/app.js?time=1712590152971.js"></script>
 
 
 
@@ -3255,7 +3071,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1712590153027')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1712590152971')</script>
 
 
 
@@ -3384,19 +3200,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1712590153027")
+        volantis.js("/js/plugins/sites.js?time=1712590152971")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1712590153027")
+        volantis.js("/js/plugins/friends.js?time=1712590152971")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1712590153027")
+        volantis.js("/js/plugins/contributors.js?time=1712590152971")
       }
     
   };
@@ -3523,7 +3339,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1712590153027");
+    return volantis.js("/js/search/hexo.js?time=1712590152971");
   }
 
   function loadSearchService() {
@@ -3814,7 +3630,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/tags/Java/","name":"Java"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Sheep's Blog","url":"https://n1vk.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","description":""},"publisher":{"@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://n1vk.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/controlling-goroutines/","name":"Goroutines 的调度与并发控制"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Goroutines 的调度与并发控制","description":"Goroutine是如何调度的，如何在代码中操作其执行的顺序？","datePublished":"2024-04-08T14:38:56.000Z","dateModified":"2024-04-08T15:23:23.018Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/controlling-goroutines/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/controlling-goroutines/","wordCount":31,"articleSection":"Programming","keywords":"Golang,后端,Goroutine","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
