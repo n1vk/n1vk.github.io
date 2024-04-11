@@ -20,7 +20,7 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1712809824363" as="style">
+  <link rel="preload" href="/css/style.css?time=1712812267717" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1690,8 +1690,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1712809824363" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1712809824363"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1712812267717" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1712812267717"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,9 +1768,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1712809824363","sites":"/js/plugins/sites.js?time=1712809824363","friends":"/js/plugins/friends.js?time=1712809824363","parallax":"/js/plugins/parallax.js?time=1712809824363","rightMenu":"/js/plugins/rightMenu.js?time=1712809824363","contributors":"/js/plugins/contributors.js?time=1712809824363","message":"/js/thirdparty/message.js?time=1712809824363","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712809824363","search":"/js/search/hexo.js?time=1712809824363"},"css":{"style":"/css/style.css?time=1712809824363","message":"/css/message.css?time=1712809824363"}},
+    cdn: {"js":{"app":"/js/app.js?time=1712812267717","sites":"/js/plugins/sites.js?time=1712812267717","friends":"/js/plugins/friends.js?time=1712812267717","parallax":"/js/plugins/parallax.js?time=1712812267717","rightMenu":"/js/plugins/rightMenu.js?time=1712812267717","contributors":"/js/plugins/contributors.js?time=1712812267717","message":"/js/thirdparty/message.js?time=1712812267717","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712812267717","search":"/js/search/hexo.js?time=1712812267717"},"css":{"style":"/css/style.css?time=1712812267717","message":"/css/message.css?time=1712812267717"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Thu Apr 11 2024 12:30:24 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Thu Apr 11 2024 13:11:07 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2504,6 +2504,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       
         <p><em>全文翻译自go.dev官方博客。Go 包的命名方式和其他语言不太相同，同时 Go 包实际上没有 subpackage （子包）这样的设定。包和包之间是独立的，路径只是用来组织他们。因为对此感到有些困惑，所以去官方博客阅读一番，并记录下博客的翻译。其中穿插着一些自己的笔记。</em></p>
+<!-- more -->
+
+
+
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><div class="story post-story"><p>Go代码是以包进行组织的。在包内，代码可以引用其中定义的任何标识符。而包的客户（<em>即import该包的代码</em>）只能引用包的导出类型、函数、常量和变量（<em>以大写字符开头的</em>）。这类引用始终包含了<strong>包名</strong>作为其前缀：<code>foo.Bar</code>引用<code>foo</code>包中的导出名<code>Bar</code></p>
 <p>好的包命名可以让代码更好。包名为其内容提供了上下文（<em>语义</em>），使客户更容易理解包的用途。同时其也能帮助包自身的维护者确定在扩展功能时，哪些内容仍然改属于这个包，哪些内容不该属于这个包。良好的包命名可以帮助你轻松找到所需代码。</p>
 <p>Effective Go提供了包、类型、函数和变量的<a target="_blank" rel="noopener" href="https://go.dev/doc/effective_go#names">命名指南</a>。本文则扩展包命名的讨论，并调查在标准库中发现的名称。并且，我们将讨论一些错误的包名和修复他们的方法。</p>
@@ -3146,7 +3150,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1712809824363.js"></script>
+<script src="/js/app.js?time=1712812267717.js"></script>
 
 
 
@@ -3338,7 +3342,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1712809824363')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1712812267717')</script>
 
 
 
@@ -3467,19 +3471,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1712809824363")
+        volantis.js("/js/plugins/sites.js?time=1712812267717")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1712809824363")
+        volantis.js("/js/plugins/friends.js?time=1712812267717")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1712809824363")
+        volantis.js("/js/plugins/contributors.js?time=1712812267717")
       }
     
   };
@@ -3606,7 +3610,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1712809824363");
+    return volantis.js("/js/search/hexo.js?time=1712812267717");
   }
 
   function loadSearchService() {
