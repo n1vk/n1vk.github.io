@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://n1vk.github.io/Note/vue-component-control/</loc>
+    
+    <lastmod>2024-04-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://n1vk.github.io/Programming/go-sync/</loc>
     
     <lastmod>2024-04-11</lastmod>
@@ -284,6 +293,20 @@
   
   <url>
     <loc>https://n1vk.github.io/tags/Java-Virtual-Machine/</loc>
+    <lastmod>2024-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/Vue/</loc>
+    <lastmod>2024-04-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://n1vk.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2024-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
