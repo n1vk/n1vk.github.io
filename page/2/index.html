@@ -20,7 +20,7 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1712812472560" as="style">
+  <link rel="preload" href="/css/style.css?time=1712817883723" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -1690,8 +1690,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1712812472560" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1712812472560"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1712817883723" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1712817883723"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,9 +1768,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1712812472560","sites":"/js/plugins/sites.js?time=1712812472560","friends":"/js/plugins/friends.js?time=1712812472560","parallax":"/js/plugins/parallax.js?time=1712812472560","rightMenu":"/js/plugins/rightMenu.js?time=1712812472560","contributors":"/js/plugins/contributors.js?time=1712812472560","message":"/js/thirdparty/message.js?time=1712812472560","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712812472560","search":"/js/search/hexo.js?time=1712812472560"},"css":{"style":"/css/style.css?time=1712812472560","message":"/css/message.css?time=1712812472560"}},
+    cdn: {"js":{"app":"/js/app.js?time=1712817883723","sites":"/js/plugins/sites.js?time=1712817883723","friends":"/js/plugins/friends.js?time=1712817883723","parallax":"/js/plugins/parallax.js?time=1712817883723","rightMenu":"/js/plugins/rightMenu.js?time=1712817883723","contributors":"/js/plugins/contributors.js?time=1712817883723","message":"/js/thirdparty/message.js?time=1712817883723","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712817883723","search":"/js/search/hexo.js?time=1712817883723"},"css":{"style":"/css/style.css?time=1712817883723","message":"/css/message.css?time=1712817883723"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Thu Apr 11 2024 13:14:32 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Thu Apr 11 2024 14:44:43 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2464,6 +2464,146 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Note/subnets-and-nat/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Sheep's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Sheep's Blog">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/Note/subnets-and-nat/"  itemprop="url">
+        浅浅区分一下分类网和网络地址转换
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      打开我自己购买的路由器，连接我的设备。我所在的这个网络应该叫子网，还是私网（专用网）？如果已经有子网掩码来为网络分类，我们为什么还需要网络类型转换（NAT）？一番调查之后，我想梳理清楚这个小问题。
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/4NteqRw8YAL1kjH.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/4NteqRw8YAL1kjH.png">
+            <meta itemprop="name" content="踩键盘的猫">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2022-05-25T21:05:25+08:00">2022-05-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Note/">Note</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Note/" itemprop="url"><span itemprop="name">Note</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/Note/subnets-and-nat/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/vjvm-lab1/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Sheep's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="Sheep's Blog">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <div class='headimg-div'>
+      <a class='headimg-a' href="/Programming/vjvm-lab1/">
+        <img itemprop="image" class='headimg' alt="构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1" src='https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png'/>
+      </a>
+    </div>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/Programming/vjvm-lab1/"  itemprop="url">
+        构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
+            <meta itemprop="name" content="羊羊">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2022-05-10T14:02:27+08:00">2022-05-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Programming/">Programming</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/Programming/vjvm-lab1/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/design-pattern-1/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Sheep's Blog">
@@ -2670,144 +2810,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Note/algorithm-0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Sheep's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Sheep's Blog">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Note/algorithm-0/"  itemprop="url">
-        算法题记录 - 键盘测试
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      正向思考不出来的问题，反过来。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-03-29T08:00:00+08:00">2022-03-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Note/">Note</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Note/" itemprop="url"><span itemprop="name">Note</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Note/algorithm-0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/design-pattern-0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Sheep's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Sheep's Blog">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/design-pattern-0/"  itemprop="url">
-        设计模式：基本思想与策略模式
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      学习 Head First Design Pattern，第一部分的内容包括初步认识设计模式，学习基本设计原则以及学习的第一个设计模式：策略(Strategy)模式。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-03-28T20:21:57+08:00">2022-03-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Programming/design-pattern-0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -2935,7 +2937,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Programming/" href="/categories/Programming/"
             active-action="action-categoriesProgramming"
-            ><div class='name'>Programming</div><div class='badge'>(7)</div></a></li>
+            ><div class='name'>Programming</div><div class='badge'>(9)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Thoughts/" href="/categories/Thoughts/"
@@ -2964,7 +2966,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Ethereum/" style="font-size: 19px; color: #777">Ethereum</a> <a href="/tags/Gin/" style="font-size: 14px; color: #999">Gin</a> <a href="/tags/Golang/" style="font-size: 24px; color: #555">Golang</a> <a href="/tags/Goroutine/" style="font-size: 14px; color: #999">Goroutine</a> <a href="/tags/Java/" style="font-size: 24px; color: #555">Java</a> <a href="/tags/Java-Virtual-Machine/" style="font-size: 14px; color: #999">Java Virtual Machine</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Solidity/" style="font-size: 19px; color: #777">Solidity</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">博客</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 19px; color: #777">后端</a> <a href="/tags/%E6%83%B3%E6%B3%95/" style="font-size: 14px; color: #999">想法</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 19px; color: #777">智能合约</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 24px; color: #555">程序设计</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">计算机网络</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 14px; color: #999">记录</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 19px; color: #777">设计模式</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 24px; color: #555">面向对象</a>
+      <a href="/tags/Ethereum/" style="font-size: 17.33px; color: #828282">Ethereum</a> <a href="/tags/Gin/" style="font-size: 14px; color: #999">Gin</a> <a href="/tags/Golang/" style="font-size: 24px; color: #555">Golang</a> <a href="/tags/Goroutine/" style="font-size: 14px; color: #999">Goroutine</a> <a href="/tags/Java/" style="font-size: 20.67px; color: #6c6c6c">Java</a> <a href="/tags/Java-Virtual-Machine/" style="font-size: 14px; color: #999">Java Virtual Machine</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Solidity/" style="font-size: 17.33px; color: #828282">Solidity</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">博客</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 17.33px; color: #828282">后端</a> <a href="/tags/%E6%83%B3%E6%B3%95/" style="font-size: 14px; color: #999">想法</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 17.33px; color: #828282">智能合约</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 20.67px; color: #6c6c6c">程序设计</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">计算机网络</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 14px; color: #999">记录</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 17.33px; color: #828282">设计模式</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 20.67px; color: #6c6c6c">面向对象</a>
     </div>
   </section>
 
@@ -3041,7 +3043,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>11 篇</div>
+          <div>13 篇</div>
         </div>
       
 
@@ -3208,7 +3210,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1712812472560.js"></script>
+<script src="/js/app.js?time=1712817883723.js"></script>
 
 
 
@@ -3400,7 +3402,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1712812472560')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1712817883723')</script>
 
 
 
@@ -3529,19 +3531,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1712812472560")
+        volantis.js("/js/plugins/sites.js?time=1712817883723")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1712812472560")
+        volantis.js("/js/plugins/friends.js?time=1712817883723")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1712812472560")
+        volantis.js("/js/plugins/contributors.js?time=1712817883723")
       }
     
   };
@@ -3668,7 +3670,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1712812472560");
+    return volantis.js("/js/search/hexo.js?time=1712817883723");
   }
 
   function loadSearchService() {

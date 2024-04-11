@@ -4,8 +4,8 @@
   <meta name="generator" content="Hexo 5.4.2">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://n1vk.github.io/tags/java/"/>
+  
+  <link rel="canonical" href="https://n1vk.github.io/programming/go-sync/"/>
   <!-- 渲染优化 -->
   <!-- <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
@@ -20,20 +20,25 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1712817883740" as="style">
+  <link rel="preload" href="/css/style.css?time=1712817883734" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>标签：Java - Sheep's Blog</title>
-  <meta name="keywords" content="null">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Sheep&#39;s Blog">
-<meta property="og:url" content="https://n1vk.github.io/tags/Java/index.html">
+  <title>Go 标准库分析 - sync - Sheep's Blog</title>
+  <meta name="keywords" content="Golang,null">
+  <meta name="description" content="分析Go标准库中提供的同步控制包sync，这个包提供了各种同步原语，主要用于各种协程间管理，互斥锁，并发安全的结构等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go 标准库分析 - sync">
+<meta property="og:url" content="https://n1vk.github.io/Programming/go-sync/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
+<meta property="og:description" content="分析Go标准库中提供的同步控制包sync，这个包提供了各种同步原语，主要用于各种协程间管理，互斥锁，并发安全的结构等等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2024-04-11T05:20:52.000Z">
+<meta property="article:modified_time" content="2024-04-11T05:41:50.479Z">
 <meta property="article:author" content="Yang">
+<meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <!-- feed -->
@@ -1690,8 +1695,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1712817883740" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1712817883740"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1712817883734" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1712817883734"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1768,7 +1773,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1712817883740","sites":"/js/plugins/sites.js?time=1712817883740","friends":"/js/plugins/friends.js?time=1712817883740","parallax":"/js/plugins/parallax.js?time=1712817883740","rightMenu":"/js/plugins/rightMenu.js?time=1712817883740","contributors":"/js/plugins/contributors.js?time=1712817883740","message":"/js/thirdparty/message.js?time=1712817883740","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712817883740","search":"/js/search/hexo.js?time=1712817883740"},"css":{"style":"/css/style.css?time=1712817883740","message":"/css/message.css?time=1712817883740"}},
+    cdn: {"js":{"app":"/js/app.js?time=1712817883734","sites":"/js/plugins/sites.js?time=1712817883734","friends":"/js/plugins/friends.js?time=1712817883734","parallax":"/js/plugins/parallax.js?time=1712817883734","rightMenu":"/js/plugins/rightMenu.js?time=1712817883734","contributors":"/js/plugins/contributors.js?time=1712817883734","message":"/js/thirdparty/message.js?time=1712817883734","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1712817883734","search":"/js/search/hexo.js?time=1712817883734"},"css":{"style":"/css/style.css?time=1712817883734","message":"/css/message.css?time=1712817883734"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
     lastupdate: new Date('Thu Apr 11 2024 14:44:43 GMT+0800 (China Standard Time)'),
     sidebar: {
@@ -2387,7 +2392,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper  search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://s2.loli.net/2022/03/28/fiZlyxE3ROI9qaV.png"></div>
 
@@ -2455,29 +2460,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
-  
-    
-      
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/vjvm-lab1/">
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/go-sync/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="Sheep's Blog">
   </span>
@@ -2486,212 +2471,221 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/Programming/vjvm-lab1/">
-        <img itemprop="image" class='headimg' alt="构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1" src='https://s2.loli.net/2022/05/10/cAHQieNT9pt4bSf.png'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/vjvm-lab1/"  itemprop="url">
-        构造玩具版 Java 虚拟机 - 软件工程课程作业 Lab1
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      本文章系列介绍软件工程与计算一(SEC-I)课程大作业，其最终目标是实现一个可以运行Java程序的JVM。在第一个Lab中，我们将会阅读框架代码，了解Java字节码并将数据读入我们的程序。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-05-10T14:02:27+08:00">2022-05-10</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Programming/vjvm-lab1/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/design-pattern-1/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Sheep's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Sheep's Blog">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
   
     <span hidden>
       <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/design-pattern-1/"  itemprop="url">
-        设计模式：观察者模式与装饰者模式
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      学习 Head First Design Pattern 的第二部分的内容包括观察者(Observer)模式和装饰者(Decorator)模式。
+    
+      <h1 class="title" itemprop="name headline">
+        Go 标准库分析 - sync
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" class="lazyload" data-srcset="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">羊羊</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Programming/">Programming</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-04-15T17:18:03+08:00">2022-04-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-04-11T13:20:52+08:00">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2024年4月11日</p>
+  </a>
+</div>
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p><strong>挖坑慢填，尚未完工</strong></p>
+<p>键入<code>go doc sync</code>你可以获得以下文档内容：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sync <span class="comment">// import &quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line">Package sync provides basic synchronization primitives such as mutual exclusion locks. Other than the Once and WaitGroup types, most are intended <span class="keyword">for</span> use by low-level library routines. Higher-level synchronization is better done via channels and communication.</span><br><span class="line"></span><br><span class="line">Values containing the types defined in this <span class="keyword">package</span> should not be copied.</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cond <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">NewCond</span><span class="params">(l Locker)</span> *<span class="title">Cond</span></span></span><br><span class="line"><span class="keyword">type</span> Locker <span class="keyword">interface</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Map <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Mutex <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Once <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Pool <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> RWMutex <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> WaitGroup <span class="keyword">struct</span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们针对每个类型进行分析吧（顺序不按照上面给出）。</p>
+<h2 id="sync-Locker"><a href="#sync-Locker" class="headerlink" title="sync.Locker"></a>sync.Locker</h2><div class="story post-story"><p>这个接口定义了锁结构必须实现的方法，也就是加锁和解锁，没有什么特别值得注意的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Locker <span class="keyword">interface</span> &#123;</span><br><span class="line">	Lock()</span><br><span class="line">	Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>后面我们将看到很多原语都实现了这个接口。</p>
+</div><h2 id="sync-Mutex-sync-RWMutex"><a href="#sync-Mutex-sync-RWMutex" class="headerlink" title="sync.Mutex / sync.RWMutex"></a>sync.Mutex / sync.RWMutex</h2><div class="story post-story"><p>顾名思义，这两个原语实现了互斥锁/读写互斥锁。</p>
+</div><h2 id="sync-Once"><a href="#sync-Once" class="headerlink" title="sync.Once"></a>sync.Once</h2><div class="story post-story"><p>该原语能够确保某个函数只被执行一次。</p>
+</div><h2 id="sync-WaitGroup"><a href="#sync-WaitGroup" class="headerlink" title="sync.WaitGroup"></a>sync.WaitGroup</h2><div class="story post-story"><p>该源于用于在一个 goroutine 中等待其他一组 goroutine 执行完毕。</p>
+</div><h2 id="sync-Pool"><a href="#sync-Pool" class="headerlink" title="sync.Pool"></a>sync.Pool</h2><div class="story post-story"><p>这是一个并发池，用来安全地保存一组对象。当我们必须重用共享的和长期存在的对象（例如，数据库连接）时，或者需要优化内存分配时（使用<code>sync.Pool</code>可以防止GC后再分配）。</p>
+</div><h2 id="sync-Map"><a href="#sync-Map" class="headerlink" title="sync.Map"></a>sync.Map</h2><div class="story post-story"><p>这是一个并发安全的<code>map</code>。当我们对<code>map</code>有频繁的读取和不频繁的写入，或者多个 goroutine 读取/写入/覆盖不相交的 <code>key</code> 时，我们使用 <code>sync.Map</code> 而不是普通的<code>map</code>配合<code>sync.Mutex</code>。</p>
+<blockquote>
+<p>注：Any race is a bug. 即使多个 goroutine 写入不相交map键，也会导致程序崩溃（<code>fatal error: concurrent map read and map write</code>），因为map的底层实现逻辑。关于底层逻辑之后再谈。</p>
+</blockquote>
+</div><h2 id="sync-Cond"><a href="#sync-Cond" class="headerlink" title="sync.Cond"></a>sync.Cond</h2><div class="story post-story"><p>很不常用地，这个原语用于发出一对一信号或广播信号。创建这个原语需要一个<code>sync.Locker</code>作为参数。</p>
+
+</div>
+  </div>
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/Programming/design-pattern-1/' itemprop="url">
-            阅读全文
-          </a>
+        <div class='references'>
+          <section class='header'>
+            
+              <i class="fas fa-quote-left fa-fw" aria-hidden="true"></i>
+            
+            <span>参考资料</span>
+          </section>
+          <section class='body'>
+            <ul>
+              
+                <li>
+                  <a href="https://segmentfault.com/a/1190000022545889" rel="external nofollow noopener noreferrer" target="_blank">
+                  Go语言sync包的应用详解
+                  </a>
+                </li>
+              
+            </ul>
+          </section>
         </div>
+      
+      
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-11T13:41:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年4月11日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://n1vk.github.io/Programming/design-pattern-0/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Sheep's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="Sheep's Blog">
-    <meta itemprop="description" content="">
-  </span>
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Golang/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Golang</p></a></div>
+  <span hidden itemprop="keywords">Golang</span>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+        <a class='prev' href='/Programming/go-http/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Go 标准库分析 - net/http (部分)</p>
+          <p class='content'>还没有写，哈哈
+应用例按执行顺序分析服务端客户端
+</p>
+        </a>
+      
+      
+        <a class='next' href='/Note/go-package-names/'>
+          <p class='title'>Golang 包名的良好命名规范<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>全文翻译自go.dev官方博客。其中穿插着一些自己的笔记。
+介绍Go代码是以包进行组织的。在包内，代码可以引用其中定义的任何标识符。而包的客户（即import该包的代码）只能引用包的导出类型、函...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+  
+  <article class="post white-box reveal shadow" id="comments">
     <span hidden>
-      <meta itemprop="image" content="/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/Programming/go-sync/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fas fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/Programming/design-pattern-0/"  itemprop="url">
-        设计模式：基本思想与策略模式
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
     
-      学习 Head First Design Pattern，第一部分的内容包括初步认识设计模式，学习基本设计原则以及学习的第一个设计模式：策略(Strategy)模式。
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://s2.loli.net/2022/03/28/z7rBkueKUNC8bTX.png">
-            <meta itemprop="name" content="羊羊">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2022-03-28T20:21:57+08:00">2022-03-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Programming/">Programming</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Programming/" itemprop="url"><span itemprop="name">Programming</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/Programming/design-pattern-0/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+    <div id="layoutHelper-comments"></div>
 
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
+  </article>
   
 
 
-    
-  
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2699,70 +2693,21 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget blogger shadow desktop pjax">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://s2.loli.net/2022/03/28/EjCkWKOIRd5J8NZ.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>羊羊</h2>
-        
-        
-          <p>只是随处可见的羊<br></p>
 
-        
-        
-      </div>
+
+  <section class="widget toc-wrapper shadow desktop mobile pjax" id="toc-div" >
     
+  <header>
     
-      <div class="social-wrapper">
-        
-          
-            <a href="/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/EasterEgg/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
-  </div>
-</section>
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-Locker"><span class="toc-text">sync.Locker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-Mutex-sync-RWMutex"><span class="toc-text">sync.Mutex &#x2F; sync.RWMutex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-Once"><span class="toc-text">sync.Once</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-WaitGroup"><span class="toc-text">sync.WaitGroup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-Pool"><span class="toc-text">sync.Pool</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-Map"><span class="toc-text">sync.Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync-Cond"><span class="toc-text">sync.Cond</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -2805,144 +2750,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
 
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/tags'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Ethereum/" style="font-size: 17.33px; color: #828282">Ethereum</a> <a href="/tags/Gin/" style="font-size: 14px; color: #999">Gin</a> <a href="/tags/Golang/" style="font-size: 24px; color: #555">Golang</a> <a href="/tags/Goroutine/" style="font-size: 14px; color: #999">Goroutine</a> <a href="/tags/Java/" style="font-size: 20.67px; color: #6c6c6c">Java</a> <a href="/tags/Java-Virtual-Machine/" style="font-size: 14px; color: #999">Java Virtual Machine</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Solidity/" style="font-size: 17.33px; color: #828282">Solidity</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">博客</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 17.33px; color: #828282">后端</a> <a href="/tags/%E6%83%B3%E6%B3%95/" style="font-size: 14px; color: #999">想法</a> <a href="/tags/%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6/" style="font-size: 17.33px; color: #828282">智能合约</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 20.67px; color: #6c6c6c">程序设计</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">算法</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">计算机网络</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 14px; color: #999">记录</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 17.33px; color: #828282">设计模式</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 20.67px; color: #6c6c6c">面向对象</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-<section class="widget grid shadow desktop mobile pjax">
-  
-  <header>
-    
-      <i class="fas fa-headset fa-fw" aria-hidden="true"></i><span class='name'>联系我</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="grid navigation fixed">
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://github.com/n1vk/"
-          
-          
-          active-action="action-https:githubcomn1vk">
-          
-            <i class="fab fa-github fa-fw" aria-hidden="true"></i>
-          
-          Github
-        </a>
-      
-        <a class="flat-box" href="/about"
-          
-          
-          active-action="action-about">
-          
-            <i class="fas fa-envelope-open-text fa-fw" aria-hidden="true"></i>
-          
-          电子邮件
-        </a>
-      
-        <a class="flat-box" target="_blank" rel="noopener" href="https://t.me/woollen_wool"
-          
-          
-          active-action="action-https:tmewoollen_wool">
-          
-            <i class="fab fa-telegram fa-fw" aria-hidden="true"></i>
-          
-          Telegram
-        </a>
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop mobile pjax">
-  
-  <header>
-    
-      <i class="fas fa-globe-asia fa-fw" aria-hidden="true"></i><span class='name'>站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>13 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count"></div>
-        </div>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fa-solid fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fa-solid fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          <div id="last-update-show">2024-04-11 日</div> 
-        </div>
-      
-    </div>
-  </div>
-</section>
-
-  
-
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2967,14 +2788,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Go 标准库分析 - sync";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3063,7 +2885,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1712817883740.js"></script>
+<script src="/js/app.js?time=1712817883734.js"></script>
 
 
 
@@ -3255,7 +3077,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1712817883740')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1712817883734')</script>
 
 
 
@@ -3384,19 +3206,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1712817883740")
+        volantis.js("/js/plugins/sites.js?time=1712817883734")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1712817883740")
+        volantis.js("/js/plugins/friends.js?time=1712817883734")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1712817883740")
+        volantis.js("/js/plugins/contributors.js?time=1712817883734")
       }
     
   };
@@ -3523,7 +3345,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1712817883740");
+    return volantis.js("/js/search/hexo.js?time=1712817883734");
   }
 
   function loadSearchService() {
@@ -3814,7 +3636,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/tags/Java/","name":"Java"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"Sheep's Blog","url":"https://n1vk.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","description":""},"publisher":{"@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://n1vk.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/go-sync/","name":"Go 标准库分析 - sync"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Go 标准库分析 - sync","description":"分析Go标准库中提供的同步控制包sync，这个包提供了各种同步原语，主要用于各种协程间管理，互斥锁，并发安全的结构等等。","datePublished":"2024-04-11T05:20:52.000Z","dateModified":"2024-04-11T05:41:50.479Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/go-sync/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/go-sync/","wordCount":60,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

@@ -4,7 +4,57 @@
   
     
     <entry>
-      <title>Go包名的良好命名规范</title>
+      <title>Go 标准库分析 - net/http (部分)</title>
+      <link href="Programming/go-http/"/>
+      <url>Programming/go-http/</url>
+      
+        <content type="html"><![CDATA[<p><strong>还没有写，哈哈</strong></p><h2 id="应用例"><a href="#应用例" class="headerlink" title="应用例"></a>应用例</h2><div class="story post-story"><h2 id="按执行顺序分析"><a href="#按执行顺序分析" class="headerlink" title="按执行顺序分析"></a>按执行顺序分析</h2><h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Go 标准库分析 - sync</title>
+      <link href="Programming/go-sync/"/>
+      <url>Programming/go-sync/</url>
+      
+        <content type="html"><![CDATA[<p><strong>挖坑慢填，尚未完工</strong></p><p>键入<code>go doc sync</code>你可以获得以下文档内容：</p><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sync <span class="comment">// import &quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line">Package sync provides basic synchronization primitives such as mutual exclusion locks. Other than the Once and WaitGroup types, most are intended <span class="keyword">for</span> use by low-level library routines. Higher-level synchronization is better done via channels and communication.</span><br><span class="line"></span><br><span class="line">Values containing the types defined in this <span class="keyword">package</span> should not be copied.</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cond <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">NewCond</span><span class="params">(l Locker)</span> *<span class="title">Cond</span></span></span><br><span class="line"><span class="keyword">type</span> Locker <span class="keyword">interface</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Map <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Mutex <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Once <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> Pool <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> RWMutex <span class="keyword">struct</span>&#123; ... &#125;</span><br><span class="line"><span class="keyword">type</span> WaitGroup <span class="keyword">struct</span>&#123; ... &#125;</span><br></pre></td></tr></table></figure><p>我们针对每个类型进行分析吧（顺序不按照上面给出）。</p><h2 id="sync-Locker"><a href="#sync-Locker" class="headerlink" title="sync.Locker"></a>sync.Locker</h2><div class="story post-story"><p>这个接口定义了锁结构必须实现的方法，也就是加锁和解锁，没有什么特别值得注意的。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Locker <span class="keyword">interface</span> &#123;</span><br><span class="line">Lock()</span><br><span class="line">Unlock()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>后面我们将看到很多原语都实现了这个接口。</p></div><h2 id="sync-Mutex-sync-RWMutex"><a href="#sync-Mutex-sync-RWMutex" class="headerlink" title="sync.Mutex / sync.RWMutex"></a>sync.Mutex / sync.RWMutex</h2><div class="story post-story"><p>顾名思义，这两个原语实现了互斥锁/读写互斥锁。</p></div><h2 id="sync-Once"><a href="#sync-Once" class="headerlink" title="sync.Once"></a>sync.Once</h2><div class="story post-story"><p>该原语能够确保某个函数只被执行一次。</p></div><h2 id="sync-WaitGroup"><a href="#sync-WaitGroup" class="headerlink" title="sync.WaitGroup"></a>sync.WaitGroup</h2><div class="story post-story"><p>该源于用于在一个 goroutine 中等待其他一组 goroutine 执行完毕。</p></div><h2 id="sync-Pool"><a href="#sync-Pool" class="headerlink" title="sync.Pool"></a>sync.Pool</h2><div class="story post-story"><p>这是一个并发池，用来安全地保存一组对象。当我们必须重用共享的和长期存在的对象（例如，数据库连接）时，或者需要优化内存分配时（使用<code>sync.Pool</code>可以防止GC后再分配）。</p></div><h2 id="sync-Map"><a href="#sync-Map" class="headerlink" title="sync.Map"></a>sync.Map</h2><div class="story post-story"><p>这是一个并发安全的<code>map</code>。当我们对<code>map</code>有频繁的读取和不频繁的写入，或者多个 goroutine 读取/写入/覆盖不相交的 <code>key</code> 时，我们使用 <code>sync.Map</code> 而不是普通的<code>map</code>配合<code>sync.Mutex</code>。</p><blockquote><p>注：Any race is a bug. 即使多个 goroutine 写入不相交map键，也会导致程序崩溃（<code>fatal error: concurrent map read and map write</code>），因为map的底层实现逻辑。关于底层逻辑之后再谈。</p></blockquote></div><h2 id="sync-Cond"><a href="#sync-Cond" class="headerlink" title="sync.Cond"></a>sync.Cond</h2><div class="story post-story"><p>很不常用地，这个原语用于发出一对一信号或广播信号。创建这个原语需要一个<code>sync.Locker</code>作为参数。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Programming </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Golang 包名的良好命名规范</title>
       <link href="Note/go-package-names/"/>
       <url>Note/go-package-names/</url>
       
