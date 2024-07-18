@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>查看 Git 存储库中代码提交行数</title>
+      <link href="Note/git-check-workload/"/>
+      <url>Note/git-check-workload/</url>
+      
+        <content type="html"><![CDATA[<p>发现在某厂实习的同学有一个码力统计平台，可以看到写了多少代码。由此联想到，我们每次执行 Commit 的时候都可以看到控制台输出的文件行数增加减少的提示。因此此信息是被 Git 统计了的，那么当然可以在本地获取到，只不过获取的是单个存储库的内容。</p><p><del>我更好奇为啥 Gitlab 等 Git 端没有集成这个功能，是觉得意义不大吗</del></p><p>首先，我们来用 <code>git log</code> 获取当前存储库所有贡献者，并用 <code>sort -u</code> 去重。此处获得的名字是 <code>gitconfig</code> 设置的名字。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authors=$(git <span class="built_in">log</span> --format=<span class="string">&#x27;%aN&#x27;</span> | sort -u)</span><br></pre></td></tr></table></figure><p>接下来，我们来遍历这些名字，并根据作者名字获取<code>numstat</code>。</p><p>其中，<code>--pretty:tformat:</code>是一个空的自定义格式，表示我们将会忽略所有提交信息，这样我们的输出结果里只有<code>numstat</code>了。</p><p>最后，使用<code>awk</code>来统计数量即可。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一行一行读取名字</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$authors</span>&quot;</span> | <span class="keyword">while</span> <span class="built_in">read</span> name; <span class="keyword">do</span></span><br><span class="line">    <span class="comment"># 输出一个定宽名字</span></span><br><span class="line">    <span class="keyword">do</span> <span class="built_in">printf</span> <span class="string">&#x27;%-20s&#x27;</span> <span class="string">&quot;[<span class="variable">$name</span>]&quot;</span></span><br><span class="line">    </span><br><span class="line">    git <span class="built_in">log</span> --author=<span class="string">&quot;<span class="variable">$name</span>&quot;</span> --pretty=tformat: --numstat | awk <span class="string">&#x27;</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">        add += $1  # 累加添加的行数</span></span><br><span class="line"><span class="string">        subs += $2 # 累加删除的行数</span></span><br><span class="line"><span class="string">        loc += $1 - $2 # 计算总的代码行数变化</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    END &#123;</span></span><br><span class="line"><span class="string">        # 输出统计结果</span></span><br><span class="line"><span class="string">        printf &quot;[Add] %-6d [Removed] %-6d [Total] %-6d\n&quot;, add, subs, loc</span></span><br><span class="line"><span class="string">    &#125;&#x27;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>最终，我们可以把代码写成一行并用管道连接。可以做成一个<code>alias</code>，如果你想的话。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --format=<span class="string">&#x27;%aN&#x27;</span> | sort -u | <span class="keyword">while</span> <span class="built_in">read</span> name; <span class="keyword">do</span> <span class="built_in">printf</span> <span class="string">&#x27;%-20s&#x27;</span> <span class="string">&quot;[<span class="variable">$name</span>]&quot;</span>; git <span class="built_in">log</span> --author=<span class="string">&quot;<span class="variable">$name</span>&quot;</span> --pretty=tformat: --numstat | awk <span class="string">&#x27;&#123; add += $1; subs += $2; loc += $1 - $2 &#125; END &#123; printf &quot;[Add] %-6d [Removed] %-6d [Total] %-6d\n&quot;, add, subs, loc &#125;&#x27;</span>; <span class="keyword">done</span></span><br></pre></td></tr></table></figure><p>这样就可以看到你写了多少行代码了。哇，好有用的功能啊。</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Nivek]             [Add] 114514 [Removed] 1919   [Total] 112595 </span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>尝试在一台搭载 Ascend GPU 服务器上进行大模型推理</title>
+      <link href="Note/inference-on-ascend-server/"/>
+      <url>Note/inference-on-ascend-server/</url>
+      
+        <content type="html"><![CDATA[<p>真难搞，已老实。<del>好想要A100喔</del></p><h2 id="昇腾简介"><a href="#昇腾简介" class="headerlink" title="昇腾简介"></a>昇腾简介</h2><div class="story post-story"><p>华为设计发布了AI处理器（NPU），采用达芬奇架构，全面对标英伟达GPU并为人工智能提供全流程支持。我们平时也许对英伟达架构和其他开源AI框架比较熟悉，那么这里给出几个关键词的大概对应来更好地理解昇腾软硬件平台。</p><p>首先是硬件层：</p><blockquote><p>Atlas 硬件 (基于 Huawei Ascend 核心) &gt; Nvidia GPU (A100, H800..)</p></blockquote><p>其次是计算架构：</p><blockquote><p>CANN &gt; CUDA</p></blockquote><p>华为同样也有自己的深度学习框架，但也对第三方框架做出了适配：</p><blockquote><p>MindSpore 晟思 &gt; Tensorflow / Pytorch</p></blockquote></div><h2 id="服务器现状"><a href="#服务器现状" class="headerlink" title="服务器现状"></a>服务器现状</h2><div class="story post-story"><p>现有 Atlas 800 训练服务器，其拥有 8个 Atlas 300T（即 Ascend 910）。</p><p>服务器本身并不是华为，而是来自<code>烽火超微/长江计算</code>的<code>FitServer G420X V5</code>，在网络上鲜有资料。</p><p>服务器运行 BigCloud Enterprise Linux For Euler 21.10系统（应该就是openEuler，在中移官网上也显示出其本质是openEuler）。</p></div><h2 id="安装-CANN"><a href="#安装-CANN" class="headerlink" title="安装 CANN"></a>安装 CANN</h2><div class="story post-story"><p>CANN 分为几个版本，Toolkit是最全量的，其支持训练、推理、模型转换及其他应用开发。我们下载 <code>Ascend-cann-toolkit_8.0.RC2.alpha001_linux-x86_64.run</code> 并用 SFTP 上传到服务器。</p><h3 id="已失败-离线安装依赖"><a href="#已失败-离线安装依赖" class="headerlink" title="[已失败] 离线安装依赖"></a>[已失败] 离线安装依赖</h3><p>根据<a href="https://www.hiascend.com/document/detail/zh/canncommercial/80RC1/quickstart/quickstart/quickstart_18_0006.html">手册</a>，我们需要为系统安装第三方依赖，但服务器并无互联网连接。我们在本地启动一个Docker，并利用本地Docker下载包，上传到服务器安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos</span><br><span class="line">docker run -d -i -t --name bclinux centos /bin/bash</span><br></pre></td></tr></table></figure><blockquote><p> Docker 命令行知识</p><p><code>-d</code>以后台模式运行容器</p><p><code>-p 宿主机端口:容器端口</code> 将宿主机的端口映射到容器的某个端口</p><p><code>-i</code> 提供交互式bash（即使没有连接也保持STDIN开启）</p><p><code>-t</code>分配一个伪TTY</p></blockquote><p><em>这里回顾发现装错了，应该装 openEuler 的镜像的。不过这玩意真的有 Docker Image 吗？</em></p><p>BigCloud Enterprise Linux是中移基于CentOS自己包装的系统。因此我们装个CentOS8即可。这里记录一下CentOS出现的一些<code>yum</code>问题，由于CentOS已经停止更新，我们可以通过以下方式将其镜像设置为阿里云：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">minorver=8.5.2111</span><br><span class="line">sed -e <span class="string">&quot;s|^mirrorlist=|#mirrorlist=|g&quot;</span> \</span><br><span class="line">         -e <span class="string">&quot;s|^#baseurl=http://mirror.centos.org/\$contentdir/\$releasever|baseurl=https://mirrors.aliyun.com/centos-vault/<span class="variable">$minorver</span>|g&quot;</span> \</span><br><span class="line">         -i.bak \</span><br><span class="line">         /etc/yum.repos.d/CentOS-*.repo</span><br></pre></td></tr></table></figure><p>接下来我们使用:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install --downloadonly XXX --downloaddir=<span class="string">&quot;./pkgs&quot;</span></span><br></pre></td></tr></table></figure><p>就可以仅下载不安装rpm包了。</p><p>将安装好的<code>rpm</code>包拷贝到宿主机：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp centos:/root/pkgs pkgs/</span><br></pre></td></tr></table></figure><p>并使用<code>rpm -ivh/-Uvh</code>安装。</p><p><strong>完全失败了。因为系统已经安装了很多包，同时需要安装的包也很多，相互间产生了循环依赖，手动解决的代价很大。</strong></p><h3 id="访问校园镜像"><a href="#访问校园镜像" class="headerlink" title="访问校园镜像"></a>访问校园镜像</h3><p>说服了服务器管理员允许集群访问校园镜像站。</p><p><del>还是社工好用啊.jpg</del></p><p>另：学校镜像站的IP地址是一个公网IP，在唐仲英楼。</p></div><h2 id="选择推理框架"><a href="#选择推理框架" class="headerlink" title="选择推理框架"></a>选择推理框架</h2><div class="story post-story"><p>已经有了算子，现在只需要推理框架就可以部署模型了。考虑以下几个备选：</p><ul><li><del>FastChat</del>  只支持使用单个 Ascend NPU 进行推理，能跑但效率感人，失败</li><li><del>MindIE</del>    没想到华为自己的框架都不支持这款服务器，失败</li><li><del>vLLM</del>      不支持 CANN</li></ul><p>暂时没有发现其他的框架。搁置。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> LLM </tag>
+            
+            <tag> 昇腾 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记录 Vue 亲子组件遇到的坑和解决办法</title>
       <link href="Note/vue-component-control/"/>
       <url>Note/vue-component-control/</url>
