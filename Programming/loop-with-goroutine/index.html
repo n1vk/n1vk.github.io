@@ -20,7 +20,7 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1724081635573" as="style">
+  <link rel="preload" href="/css/style.css?time=1724082170079" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-08-15T13:27:20.000Z">
-<meta property="article:modified_time" content="2024-08-19T15:33:45.465Z">
+<meta property="article:modified_time" content="2024-08-19T15:42:39.030Z">
 <meta property="article:author" content="Yang">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
@@ -1695,8 +1695,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1724081635573" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1724081635573"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1724082170079" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1724082170079"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1773,9 +1773,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1724081635573","sites":"/js/plugins/sites.js?time=1724081635573","friends":"/js/plugins/friends.js?time=1724081635573","parallax":"/js/plugins/parallax.js?time=1724081635573","rightMenu":"/js/plugins/rightMenu.js?time=1724081635573","contributors":"/js/plugins/contributors.js?time=1724081635573","message":"/js/thirdparty/message.js?time=1724081635573","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1724081635573","search":"/js/search/hexo.js?time=1724081635573"},"css":{"style":"/css/style.css?time=1724081635573","message":"/css/message.css?time=1724081635573"}},
+    cdn: {"js":{"app":"/js/app.js?time=1724082170079","sites":"/js/plugins/sites.js?time=1724082170079","friends":"/js/plugins/friends.js?time=1724082170079","parallax":"/js/plugins/parallax.js?time=1724082170079","rightMenu":"/js/plugins/rightMenu.js?time=1724082170079","contributors":"/js/plugins/contributors.js?time=1724082170079","message":"/js/thirdparty/message.js?time=1724082170079","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1724082170079","search":"/js/search/hexo.js?time=1724082170079"},"css":{"style":"/css/style.css?time=1724082170079","message":"/css/message.css?time=1724082170079"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Mon Aug 19 2024 23:33:55 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Mon Aug 19 2024 23:42:50 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2560,11 +2560,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Goloop</span><span class="params">(workload []data.Payload)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line">	<span class="keyword">var</span> countCh = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;, <span class="built_in">len</span>(workload))</span><br><span class="line">	<span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> workload &#123;</span><br><span class="line"></span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(v data.Payload)</span></span> &#123;</span><br><span class="line">			<span class="keyword">defer</span> wg.Done()</span><br><span class="line"></span><br><span class="line">			work.Work(v)</span><br><span class="line">			countCh &lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		&#125;(v)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		wg.Wait()</span><br><span class="line">		<span class="built_in">close</span>(countCh)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> <span class="keyword">range</span> countCh &#123;</span><br><span class="line">		count++</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们将会启动一个协程负责等待 Waitgroup，在此之后关闭计数通道并退出。主循环协程在通道关闭前都会持续进行计数工作，也保证了该协程处于等待 Waitgroup 的状态。</p>
-</div><h2 id="加速循环？"><a href="#加速循环？" class="headerlink" title="加速循环？"></a>加速循环？</h2><div class="story post-story"><p>现在我们已经把并行版循环写好了。然而令人遗憾的是，有些时候这种操作并不能带来明显的性能提升。例如：</p>
+</div><h2 id="加速循环？"><a href="#加速循环？" class="headerlink" title="加速循环？"></a>加速循环？</h2><div class="story post-story"><p>现在我们已经把并行版循环写好了。然而令人遗憾的是，有些时候这种操作并不能带来明显的性能提升。<br>我尝试举出一些例子，但我觉得他们并不一定准确：</p>
 <ul>
 <li>Work() 需要竞争某种资源，Goroutine 即使已创建也必须等待其他 Goroutine 结束才能继续执行，从而退化为串行。</li>
-<li>Work() 本身就很快。使用协程反而增加了资源分配和调度开销。</li>
-<li>SomeSlice 太小，优势不明显。</li>
+<li>Work() 的瓶颈在于一些 IO 操作。使用协程反而增加了资源分配和调度开销（这是否和上面的情况相同？）。</li>
+<li>setSize 太小，虽然快了，但优势不明显。</li>
 </ul>
 <p>我们可以用 Go 自带的 Benchmark 去针对一些模拟情景做一些测试。</p>
 <p><em>测试机器配置如下，下文不再重复。</em></p>
@@ -2636,7 +2636,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-08-19T23:33:45+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-08-19T23:42:39+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年8月19日</p>
@@ -2923,7 +2923,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1724081635573.js"></script>
+<script src="/js/app.js?time=1724082170079.js"></script>
 
 
 
@@ -3115,7 +3115,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1724081635573')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1724082170079')</script>
 
 
 
@@ -3244,19 +3244,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1724081635573")
+        volantis.js("/js/plugins/sites.js?time=1724082170079")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1724081635573")
+        volantis.js("/js/plugins/friends.js?time=1724082170079")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1724081635573")
+        volantis.js("/js/plugins/contributors.js?time=1724082170079")
       }
     
   };
@@ -3383,7 +3383,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1724081635573");
+    return volantis.js("/js/search/hexo.js?time=1724082170079");
   }
 
   function loadSearchService() {
@@ -3674,7 +3674,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/loop-with-goroutine/","name":"用 Goroutine 处理任务一定会更快吗？[Ongoing]"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"用 Goroutine 处理任务一定会更快吗？[Ongoing]","description":"标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个在循环中开启 Goroutine 常见的错误。","datePublished":"2024-08-15T13:27:20.000Z","dateModified":"2024-08-19T15:33:45.465Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/loop-with-goroutine/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/loop-with-goroutine/","wordCount":92,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/loop-with-goroutine/","name":"用 Goroutine 处理任务一定会更快吗？[Ongoing]"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"用 Goroutine 处理任务一定会更快吗？[Ongoing]","description":"标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个在循环中开启 Goroutine 常见的错误。","datePublished":"2024-08-15T13:27:20.000Z","dateModified":"2024-08-19T15:42:39.030Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/loop-with-goroutine/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/loop-with-goroutine/","wordCount":92,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
