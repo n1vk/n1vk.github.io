@@ -20,23 +20,23 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1724082170082" as="style">
+  <link rel="preload" href="/css/style.css?time=1726666704582" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>使用 pprof 进行性能分析 [Ongoing] - Sheep's Blog</title>
+  <title>使用 pprof 进行性能分析 - Sheep's Blog</title>
   <meta name="keywords" content="Golang,null">
-  <meta name="description" content="Go pprof 能够监控堆栈分配，Goroutine 数量等关键信息，还能生成火焰图，非常方便查询各种 Go 程序内存泄露情况。">
+  <meta name="description" content="[ Ongoing ]Go pprof 能够监控堆栈分配，Goroutine 数量等关键信息，还能生成火焰图，非常方便查询各种 Go 程序内存泄露情况。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用 pprof 进行性能分析 [Ongoing]">
+<meta property="og:title" content="使用 pprof 进行性能分析">
 <meta property="og:url" content="https://n1vk.github.io/Programming/usage-of-pprof/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
-<meta property="og:description" content="Go pprof 能够监控堆栈分配，Goroutine 数量等关键信息，还能生成火焰图，非常方便查询各种 Go 程序内存泄露情况。">
+<meta property="og:description" content="[ Ongoing ]Go pprof 能够监控堆栈分配，Goroutine 数量等关键信息，还能生成火焰图，非常方便查询各种 Go 程序内存泄露情况。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-08-15T13:16:28.000Z">
-<meta property="article:modified_time" content="2024-08-15T15:02:39.674Z">
+<meta property="article:modified_time" content="2024-09-18T13:11:15.350Z">
 <meta property="article:author" content="Yang">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
@@ -1695,8 +1695,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1724082170082" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1724082170082"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1726666704582" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1726666704582"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1773,9 +1773,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1724082170082","sites":"/js/plugins/sites.js?time=1724082170082","friends":"/js/plugins/friends.js?time=1724082170082","parallax":"/js/plugins/parallax.js?time=1724082170082","rightMenu":"/js/plugins/rightMenu.js?time=1724082170082","contributors":"/js/plugins/contributors.js?time=1724082170082","message":"/js/thirdparty/message.js?time=1724082170082","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1724082170082","search":"/js/search/hexo.js?time=1724082170082"},"css":{"style":"/css/style.css?time=1724082170082","message":"/css/message.css?time=1724082170082"}},
+    cdn: {"js":{"app":"/js/app.js?time=1726666704582","sites":"/js/plugins/sites.js?time=1726666704582","friends":"/js/plugins/friends.js?time=1726666704582","parallax":"/js/plugins/parallax.js?time=1726666704582","rightMenu":"/js/plugins/rightMenu.js?time=1726666704582","contributors":"/js/plugins/contributors.js?time=1726666704582","message":"/js/thirdparty/message.js?time=1726666704582","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1726666704582","search":"/js/search/hexo.js?time=1726666704582"},"css":{"style":"/css/style.css?time=1726666704582","message":"/css/message.css?time=1726666704582"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Mon Aug 19 2024 23:42:50 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Wed Sep 18 2024 21:38:24 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2483,7 +2483,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        使用 pprof 进行性能分析 [Ongoing]
+        使用 pprof 进行性能分析
       </h1>
       <div class='new-meta-box'>
         
@@ -2555,10 +2555,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-08-15T23:02:39+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-18T21:11:15+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年8月15日</p>
+    <p>更新于：2024年9月18日</p>
   </a>
 </div>
 
@@ -2609,7 +2609,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class="prev-next">
       
         <a class='prev' href='/Programming/loop-with-goroutine/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>用 Goroutine 处理任务一定会更快吗？[Ongoing]</p>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>用 Goroutine 处理任务一定会更快吗？</p>
           <p class='content'>工作来了！我们现在有一些工作要做了。
 123package workvar workload []data.Payload // len(workload) == setSize
 123pack...</p>
@@ -2688,7 +2688,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Programming/" href="/categories/Programming/"
             active-action="action-categoriesProgramming"
-            ><div class='name'>Programming</div><div class='badge'>(11)</div></a></li>
+            ><div class='name'>Programming</div><div class='badge'>(12)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Thoughts/" href="/categories/Thoughts/"
@@ -2748,7 +2748,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="使用 pprof 进行性能分析 [Ongoing]";
+  pdata.postTitle="使用 pprof 进行性能分析";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2837,7 +2837,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1724082170082.js"></script>
+<script src="/js/app.js?time=1726666704582.js"></script>
 
 
 
@@ -3029,7 +3029,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1724082170082')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1726666704582')</script>
 
 
 
@@ -3158,19 +3158,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1724082170082")
+        volantis.js("/js/plugins/sites.js?time=1726666704582")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1724082170082")
+        volantis.js("/js/plugins/friends.js?time=1726666704582")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1724082170082")
+        volantis.js("/js/plugins/contributors.js?time=1726666704582")
       }
     
   };
@@ -3297,7 +3297,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1724082170082");
+    return volantis.js("/js/search/hexo.js?time=1726666704582");
   }
 
   function loadSearchService() {
@@ -3588,7 +3588,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/usage-of-pprof/","name":"使用 pprof 进行性能分析 [Ongoing]"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用 pprof 进行性能分析 [Ongoing]","description":"Go pprof 能够监控堆栈分配，Goroutine 数量等关键信息，还能生成火焰图，非常方便查询各种 Go 程序内存泄露情况。","datePublished":"2024-08-15T13:16:28.000Z","dateModified":"2024-08-15T15:02:39.674Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/usage-of-pprof/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/usage-of-pprof/","wordCount":65,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/usage-of-pprof/","name":"使用 pprof 进行性能分析"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"使用 pprof 进行性能分析","description":"[ Ongoing ]Go pprof 能够监控堆栈分配，Goroutine 数量等关键信息，还能生成火焰图，非常方便查询各种 Go 程序内存泄露情况。","datePublished":"2024-08-15T13:16:28.000Z","dateModified":"2024-09-18T13:11:15.350Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/usage-of-pprof/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/usage-of-pprof/","wordCount":76,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->

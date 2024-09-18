@@ -20,23 +20,23 @@
   <meta content="Sheep&#39;s Blog" name="apple-mobile-web-app-title">
   <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
   <meta content="telephone=no" name="format-detection">
-  <link rel="preload" href="/css/style.css?time=1724082170079" as="style">
+  <link rel="preload" href="/css/style.css?time=1726666704579" as="style">
   <link rel="preload" href="/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 <link rel="preload" href="/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- 页面元数据 -->
-  <title>用 Goroutine 处理任务一定会更快吗？[Ongoing] - Sheep's Blog</title>
+  <title>用 Goroutine 处理任务一定会更快吗？ - Sheep's Blog</title>
   <meta name="keywords" content="Golang,null">
-  <meta name="description" content="标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个在循环中开启 Goroutine 常见的错误。">
+  <meta name="description" content="标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个并发多个 Goroutine 时常见的错误。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用 Goroutine 处理任务一定会更快吗？[Ongoing]">
+<meta property="og:title" content="用 Goroutine 处理任务一定会更快吗？">
 <meta property="og:url" content="https://n1vk.github.io/Programming/loop-with-goroutine/index.html">
 <meta property="og:site_name" content="Sheep&#39;s Blog">
-<meta property="og:description" content="标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个在循环中开启 Goroutine 常见的错误。">
+<meta property="og:description" content="标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个并发多个 Goroutine 时常见的错误。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://n1vk.github.io/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-08-15T13:27:20.000Z">
-<meta property="article:modified_time" content="2024-08-19T15:42:39.030Z">
+<meta property="article:modified_time" content="2024-09-18T13:35:31.592Z">
 <meta property="article:author" content="Yang">
 <meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
@@ -1695,8 +1695,8 @@ ul.list-v >li>a:hover {
 }
 
   </style>
-  <link rel="stylesheet" href="/css/style.css?time=1724082170079" media="print" onload="this.media='all';this.onload=null">
-  <noscript><link rel="stylesheet" href="/css/style.css?time=1724082170079"></noscript>
+  <link rel="stylesheet" href="/css/style.css?time=1726666704579" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css?time=1726666704579"></noscript>
     <script>
       let userColorScheme=localStorage.getItem("color-scheme")
       if(userColorScheme){
@@ -1773,9 +1773,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
 
   volantis.GLOBAL_CONFIG ={
-    cdn: {"js":{"app":"/js/app.js?time=1724082170079","sites":"/js/plugins/sites.js?time=1724082170079","friends":"/js/plugins/friends.js?time=1724082170079","parallax":"/js/plugins/parallax.js?time=1724082170079","rightMenu":"/js/plugins/rightMenu.js?time=1724082170079","contributors":"/js/plugins/contributors.js?time=1724082170079","message":"/js/thirdparty/message.js?time=1724082170079","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1724082170079","search":"/js/search/hexo.js?time=1724082170079"},"css":{"style":"/css/style.css?time=1724082170079","message":"/css/message.css?time=1724082170079"}},
+    cdn: {"js":{"app":"/js/app.js?time=1726666704579","sites":"/js/plugins/sites.js?time=1726666704579","friends":"/js/plugins/friends.js?time=1726666704579","parallax":"/js/plugins/parallax.js?time=1726666704579","rightMenu":"/js/plugins/rightMenu.js?time=1726666704579","contributors":"/js/plugins/contributors.js?time=1726666704579","message":"/js/thirdparty/message.js?time=1726666704579","valine":"https://npm.elemecdn.com/valine@1.4/dist/Valine.min.js?time=1726666704579","search":"/js/search/hexo.js?time=1726666704579"},"css":{"style":"/css/style.css?time=1726666704579","message":"/css/message.css?time=1726666704579"}},
     default: {"avatar":"/media/placeholder/avatar/round/3442075.svg","link":"/media/placeholder/link/8f277b4ee0ecd.svg","cover":"/media/placeholder/cover/76b86c0226ffd.svg","image":"/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date('Mon Aug 19 2024 23:42:50 GMT+0800 (China Standard Time)'),
+    lastupdate: new Date('Wed Sep 18 2024 21:38:24 GMT+0800 (China Standard Time)'),
     sidebar: {
       for_page: ["blogger","category","tagcloud","feedback","webinfo"],
       for_post: ["toc","category"],
@@ -2483,7 +2483,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        用 Goroutine 处理任务一定会更快吗？[Ongoing]
+        用 Goroutine 处理任务一定会更快吗？
       </h1>
       <div class='new-meta-box'>
         
@@ -2541,7 +2541,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Loop</span><span class="params">(workload []data.Payload)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> workload &#123;</span><br><span class="line">		work.Work(v)</span><br><span class="line">		count++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>但我想更快完成工作。是否有加速这个循环的办法？从感性层面想，如果能并行工作，那么应该可以提升效率。</p>
-<h2 id="加速循环"><a href="#加速循环" class="headerlink" title="加速循环"></a>加速循环</h2><div class="story post-story"><p>我们立刻将原有的逻辑代码包在了匿名函数里，并启动 Goroutine。</p>
+<h2 id="并发加速"><a href="#并发加速" class="headerlink" title="并发加速"></a>并发加速</h2><div class="story post-story"><p>我们立刻将原有的逻辑代码包在了匿名函数里，并启动 Goroutine。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GoloopSimple</span><span class="params">(workload []data.Payload)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> workload &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            work.Work(v)</span><br><span class="line">            count++</span><br><span class="line">        &#125;()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这是最直接的写法。但这里包含了多个问题。</p>
@@ -2560,10 +2560,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Goloop</span><span class="params">(workload []data.Payload)</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line">	<span class="keyword">var</span> countCh = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;, <span class="built_in">len</span>(workload))</span><br><span class="line">	<span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> workload &#123;</span><br><span class="line"></span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(v data.Payload)</span></span> &#123;</span><br><span class="line">			<span class="keyword">defer</span> wg.Done()</span><br><span class="line"></span><br><span class="line">			work.Work(v)</span><br><span class="line">			countCh &lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		&#125;(v)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		wg.Wait()</span><br><span class="line">		<span class="built_in">close</span>(countCh)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> <span class="keyword">range</span> countCh &#123;</span><br><span class="line">		count++</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们将会启动一个协程负责等待 Waitgroup，在此之后关闭计数通道并退出。主循环协程在通道关闭前都会持续进行计数工作，也保证了该协程处于等待 Waitgroup 的状态。</p>
-</div><h2 id="加速循环？"><a href="#加速循环？" class="headerlink" title="加速循环？"></a>加速循环？</h2><div class="story post-story"><p>现在我们已经把并行版循环写好了。然而令人遗憾的是，有些时候这种操作并不能带来明显的性能提升。<br>我尝试举出一些例子，但我觉得他们并不一定准确：</p>
+</div><h2 id="并发加速？"><a href="#并发加速？" class="headerlink" title="并发加速？"></a>并发加速？</h2><div class="story post-story"><p>现在我们已经把并行版循环写好了。然而令人遗憾的是，有些时候这种操作并不能带来明显的性能提升。<br>我尝试举出一些例子，但我觉得他们并不一定准确：</p>
 <ul>
 <li>Work() 需要竞争某种资源，Goroutine 即使已创建也必须等待其他 Goroutine 结束才能继续执行，从而退化为串行。</li>
-<li>Work() 的瓶颈在于一些 IO 操作。使用协程反而增加了资源分配和调度开销（这是否和上面的情况相同？）。</li>
+<li><del>Work() 的瓶颈在于一些 IO 操作。使用协程反而增加了资源分配和调度开销（这是否和上面的情况相同？）</del> 这是一个错误的想法，会在后面的章节作出解释。</li>
 <li>setSize 太小，虽然快了，但优势不明显。</li>
 </ul>
 <p>我们可以用 Go 自带的 Benchmark 去针对一些模拟情景做一些测试。</p>
@@ -2574,7 +2574,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="简单工作"><a href="#简单工作" class="headerlink" title="简单工作"></a>简单工作</h3><p>我们先来看一下真正的加速。假设我们的工作内容如下：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Work</span><span class="params">(w data.Payload)</span></span> &#123;</span><br><span class="line">	time.Sleep(time.Duration(<span class="number">5</span>) * time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>单纯沉睡了 5 毫秒。与此同类的操作可能涉及数学计算等。</p>
+<p>单纯沉睡了 5 毫秒。<del>与此同类的操作可能涉及数学计算等。</del> 实际上，此处协程沉睡是由 Go 调度器编排的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(setSize &#x3D; 1000)</span><br><span class="line">BenchmarkLoop-16               1        5469752291 ns&#x2F;op             112 B&#x2F;op          4 allocs&#x2F;op</span><br><span class="line">BenchmarkGoloop-16           195           6110784 ns&#x2F;op          128675 B&#x2F;op       3005 allocs&#x2F;op</span><br></pre></td></tr></table></figure>
 <p>此时性能的提升是巨大的。可以看到 Goloop 的操作速度是 Loop 的千分之一。</p>
 <h3 id="文件追加操作"><a href="#文件追加操作" class="headerlink" title="文件追加操作"></a>文件追加操作</h3><p>我们模拟一个文件追加行为。</p>
@@ -2583,8 +2583,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>测试结果显示出，Goloop 并没有比 Loop 快很多。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(setSize &#x3D; 100)</span><br><span class="line">BenchmarkLoop-16            4148            286834 ns&#x2F;op           12000 B&#x2F;op        300 allocs&#x2F;op</span><br><span class="line">BenchmarkGoloop-16          4130            273167 ns&#x2F;op           16977 B&#x2F;op        503 allocs&#x2F;op</span><br></pre></td></tr></table></figure>
 
-<p>我们是否已经触及了 Goroutine 的瓶颈？但我们尚未考虑到的是，我们单次可能启动了太多的协程，从而加大了竞争和调度（在这个例子中，100个协程争夺文件IO）。我们需要考虑一下是否应当限制协程的数量。</p>
-</div><h2 id="更正确的循环"><a href="#更正确的循环" class="headerlink" title="更正确的循环"></a>更正确的循环</h2><div class="story post-story"><p>有一个伟大的 Gopher 曾说过，把任务给协程，而不是为任务启协程(1)。</p>
+<p>我们是触及了 Goroutine 的瓶颈？但我们尚未考虑到的是，我们单次可能启动了太多的协程，从而加大了竞争和调度（在这个例子中，100个协程争夺文件IO）。我们需要考虑一下是否应当限制协程的数量。</p>
+</div><h2 id="限制并发量"><a href="#限制并发量" class="headerlink" title="限制并发量"></a>限制并发量</h2><div class="story post-story"><p>有一个伟大的 Gopher 曾说过，把任务给协程，而不是为任务启协程(1)。</p>
 <p>因此我们可以考虑在任务开始时，就使用几个 Goroutine 监视着工作 Channel，主协程的任务是把这些工作派发给现有的 Goroutines。而当任务完成后，我们关闭工作 Channel，使循环监听着的协程退出。</p>
 <p>我们的函数整体会变得更复杂一些：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GoloopWithPool</span><span class="params">(workload []data.Payload)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> workerNum = <span class="number">3</span></span><br><span class="line">	jobs := <span class="built_in">make</span>(<span class="keyword">chan</span> data.Payload, <span class="built_in">len</span>(workload))</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line">	<span class="keyword">var</span> countCh = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;, <span class="built_in">len</span>(workload))</span><br><span class="line">	<span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// worker is a working goroutine</span></span><br><span class="line">    <span class="comment">// jobs is for recerving Workload</span></span><br><span class="line">    <span class="comment">// wg is for declaring job done</span></span><br><span class="line">    <span class="comment">// done is for counting (countCh)</span></span><br><span class="line">	<span class="keyword">var</span> worker = <span class="function"><span class="keyword">func</span><span class="params">(jobs &lt;-<span class="keyword">chan</span> data.Payload, wg *sync.WaitGroup, done <span class="keyword">chan</span> <span class="keyword">struct</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">		<span class="keyword">defer</span> wg.Done()</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> v := <span class="keyword">range</span> jobs &#123;</span><br><span class="line">			work.Work(v)</span><br><span class="line">			done &lt;- <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; workerNum; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">go</span> worker(jobs, &amp;wg, countCh)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> workload &#123;</span><br><span class="line">		jobs &lt;- v</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">close</span>(jobs)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		wg.Wait()</span><br><span class="line">		<span class="built_in">close</span>(countCh)</span><br><span class="line">	&#125;()</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> <span class="keyword">range</span> countCh &#123;</span><br><span class="line">		count++</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2599,22 +2599,36 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(setSize &#x3D; 1000)</span><br><span class="line">BenchmarkGoloop-16           195           6110784 ns&#x2F;op          128675 B&#x2F;op       3005 allocs&#x2F;op</span><br><span class="line">BenchmarkGoloopWithPool-16     1        1823969911 ns&#x2F;op           10952 B&#x2F;op         25 allocs&#x2F;op</span><br></pre></td></tr></table></figure>
 
 <p><em>(1) 注：没人这么说过。</em></p>
-</div><h2 id="减速循环"><a href="#减速循环" class="headerlink" title="减速循环"></a>减速循环</h2><div class="story post-story"><p>什么情况下会更慢？我们来看看。</p>
+</div><h2 id="并发减速"><a href="#并发减速" class="headerlink" title="并发减速"></a>并发减速</h2><div class="story post-story"><p>什么情况下会更慢？我们来看看。</p>
 <h3 id="锁操作"><a href="#锁操作" class="headerlink" title="锁操作"></a>锁操作</h3><p>查看一下如果工作涉及到极端互斥锁的情况（真是太糟了）：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Work</span><span class="params">(v data.Payload)</span></span> &#123;</span><br><span class="line">	mu.Lock()</span><br><span class="line">	<span class="keyword">defer</span> mu.Unlock()</span><br><span class="line">	time.Sleep(time.Duration(<span class="number">5</span>) * time.Millisecond)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>同样是沉睡，但需要获取锁。与此同类的操作可能设计任何操作同内存区域的行为。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(setSize &#x3D; 1000)</span><br><span class="line">BenchmarkLoop-16               1        5405933355 ns&#x2F;op             112 B&#x2F;op          4 allocs&#x2F;op</span><br><span class="line">BenchmarkGoloop-16             1        5443755010 ns&#x2F;op          695616 B&#x2F;op       5019 allocs&#x2F;op</span><br><span class="line">BenchmarkGoloopWithPool-16     1        5385224617 ns&#x2F;op           11504 B&#x2F;op         28 allocs&#x2F;op</span><br></pre></td></tr></table></figure>
 <p>此时，性能降低了一些，并且内存的开销很大。非常不值得。GoloopWithPool 的速度好像快了一点点，但也没什么用。</p>
-<h3 id="网络请求操作"><a href="#网络请求操作" class="headerlink" title="网络请求操作"></a>网络请求操作</h3><p>如果工作涉及到发送 HTTP 请求呢？这其实也是我进行这一整个测试的原因。在业务中遇到了需要批量发送 HTTP 请求的行为，但使用 Goroutine 之后险些踩坑，并且也没有见到明显的性能提升。</p>
+<h3 id="协程滥用"><a href="#协程滥用" class="headerlink" title="协程滥用"></a>协程滥用</h3><p>这个例子来自 <a target="_blank" rel="noopener" href="https://100go.co/56-concurrency-faster/">go-100-mistakes</a>。具体的内容，可以查看链接。这里引用出其给出的代码的简写形式：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">parallelMergesort</span><span class="params">(s []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// guarding ...</span></span><br><span class="line"></span><br><span class="line">    middle := <span class="built_in">len</span>(s) / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line">    wg.Add(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; </span><br><span class="line">        <span class="keyword">defer</span> wg.Done()</span><br><span class="line">        parallelMergesort(s[:middle])</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; </span><br><span class="line">        <span class="keyword">defer</span> wg.Done()</span><br><span class="line">        parallelMergesort(s[middle:])</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    wg.Wait()</span><br><span class="line">    merge(s, middle) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，这个归并排序<strong>递归地</strong>创建了很多 Goroutines，最终单个协程执行的任务可能仅仅是对两个数字进行排序。在创建协程和进行栈调度的工作上，许多的时间被浪费了。</p>
+<p>原文中给出了一种优化方法，同样是基于我们“更正确的循环”思想的，即限制 Goroutine 的数量，在一定深度后退化为普通排序。这样仍然可以做到比普通归并排序更快。</p>
+</div><h2 id="并发减速？"><a href="#并发减速？" class="headerlink" title="并发减速？"></a>并发减速？</h2><div class="story post-story"><p>如果工作涉及到发送 HTTP 请求呢？这其实也是我进行这一整个测试的原因。在业务中遇到了需要批量发送 HTTP 请求的行为，但使用 Goroutine 之后险些踩坑，并且也没有见到明显的性能提升。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Work</span><span class="params">(v data.Payload)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	body := bytes.NewReader([]<span class="keyword">byte</span>(*v))</span><br><span class="line"></span><br><span class="line">	req, err := http.NewRequest(http.MethodGet, <span class="string">`http://localhost:7777/abc`</span>, body)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	client := &amp;http.Client&#123;Timeout: time.Second * <span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">	resp, err := client.Do(req)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	resp.Body.Close()</span><br><span class="line">	client.CloseIdleConnections()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><em>如果你对网络请求比较熟悉，应该能指出这份 Work 的一个错误。对于每个 Work，<code>http.Client</code> 被新建了，而非复用。但我们接下来会看到这并非一个必须解决的问题。</em></p>
-<p>由于 Benchmarking 会快速多次调用 Loop, OS 的四元组会在非常快的时间内被耗尽。我们会获得一个错误 <code>connect: cannot assign requested address</code>，因为没有新的端口可以被绑定了。</p>
+<p>由于 Benchmarking 会快速多次调用 Loop, OS 的四元组会在非常快的时间内被耗尽。我们会获得一个错误 <code>connect: cannot assign requested address</code>，因为没有新的端口可以被绑定了。不过，将测试次数降低，我们已经足够获取到结果了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; go test -bench&#x3D;. -benchtime&#x3D;5x</span><br><span class="line"></span><br><span class="line">BenchmarkLoop-16                       5          13372071 ns&#x2F;op</span><br><span class="line">BenchmarkGoloop-16                     5           3196918 ns&#x2F;op</span><br><span class="line">BenchmarkGoloopWithPool-16             5           7558866 ns&#x2F;op</span><br></pre></td></tr></table></figure>
 
-<p>在 Benchmark 测试中，显然 Goloop 是最快的，我不明白为什么，因为这和业务观察到的结果不太一致。</p>
-<p>我会继续想办法设计其他的测试方案。</p>
+<p>在 Benchmark 测试中，显然 Goloop 是最快的。难道网络 IO 和 文件 IO 是不同的吗（没错）？</p>
+</div><h2 id="协程调度和IO阻塞"><a href="#协程调度和IO阻塞" class="headerlink" title="协程调度和IO阻塞"></a>协程调度和IO阻塞</h2><div class="story post-story"><p>最终，我们可以把以上提及的所有问题分为两种受限类型：</p>
+<blockquote>
+<ol>
+<li>受限于 CPU 速度。例如，跑一个归并排序算法。</li>
+<li>受限于 IO 速度。例如，网络服务器。</li>
+</ol>
+</blockquote>
+<p>对于 &lt;1&gt;，提升效率的方式在于<strong>多核并行</strong>。如果你可以调用CPU的所有核心并行地去进行计算，那么就可以更快速的完成任务。但注意，不应当让调度器开销大于计算开销，否则得不偿失。</p>
+<p>对于 &lt;2&gt;，提升效率的方式在于<strong>Go调度器行为</strong>。对于网络IO，Go调度器实现了自己的 epoll，阻塞发生在协程级。当协程由于网络IO被阻塞时，Go调度器可以让出该协程并执行其他协程。也正因为如此，Go才天然适合作为HTTP服务器。因为其可以以最小的代价为每一个请求都开启一个 Goroutine。</p>
+<p>最终，我在业务中观察到的 Go 作为 HTTP Client 没有提升效率的原因，目前分析看来是下游的并发量受限，而 Go 客户端建立了过于多的连接。无论我作为 Client 如何调度，都无法再进一步提升效率。同时，大量的无超时 Goroutie 可能会导致 Go 客户端产生 OOM 情况。因此最后选择了将请求任务提交至一个协程池来完成工作。未来，可以考虑完全更换为消息队列，能够更符合生产者-消费者模式。</p>
 
 </div>
   </div>
@@ -2636,10 +2650,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-08-19T23:42:39+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-09-18T21:35:31+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年8月19日</p>
+    <p>更新于：2024年9月18日</p>
   </a>
 </div>
 
@@ -2689,9 +2703,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
+        <a class='prev' href='/Programming/singleflight-design-pattern/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>协程设计模式 Singleflight</p>
+          <p class='content'>
+</p>
+        </a>
+      
       
         <a class='next' href='/Programming/usage-of-pprof/'>
-          <p class='title'>使用 pprof 进行性能分析 [Ongoing]<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='title'>使用 pprof 进行性能分析<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>项目中每次执行完毕特定操作，按业务逻辑来说内存应该全部释放了，但从 Prometheus 上监控到服务内存每次都会有所增加。
 
 </p>
@@ -2743,7 +2763,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F%E5%BE%AA%E7%8E%AF"><span class="toc-text">加速循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E9%80%9F%E5%BE%AA%E7%8E%AF%EF%BC%9F"><span class="toc-text">加速循环？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E4%BD%9C"><span class="toc-text">简单工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%BF%BD%E5%8A%A0%E6%93%8D%E4%BD%9C"><span class="toc-text">文件追加操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%BE%AA%E7%8E%AF"><span class="toc-text">更正确的循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%8F%E9%80%9F%E5%BE%AA%E7%8E%AF"><span class="toc-text">减速循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81%E6%93%8D%E4%BD%9C"><span class="toc-text">锁操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%93%8D%E4%BD%9C"><span class="toc-text">网络请求操作</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%8A%A0%E9%80%9F"><span class="toc-text">并发加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%8A%A0%E9%80%9F%EF%BC%9F"><span class="toc-text">并发加速？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E4%BD%9C"><span class="toc-text">简单工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%BF%BD%E5%8A%A0%E6%93%8D%E4%BD%9C"><span class="toc-text">文件追加操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E5%B9%B6%E5%8F%91%E9%87%8F"><span class="toc-text">限制并发量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%87%8F%E9%80%9F"><span class="toc-text">并发减速</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%81%E6%93%8D%E4%BD%9C"><span class="toc-text">锁操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E6%BB%A5%E7%94%A8"><span class="toc-text">协程滥用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E5%87%8F%E9%80%9F%EF%BC%9F"><span class="toc-text">并发减速？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%92%8CIO%E9%98%BB%E5%A1%9E"><span class="toc-text">协程调度和IO阻塞</span></a></li></ol>
     </div>
   </section>
 
@@ -2774,7 +2794,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Programming/" href="/categories/Programming/"
             active-action="action-categoriesProgramming"
-            ><div class='name'>Programming</div><div class='badge'>(11)</div></a></li>
+            ><div class='name'>Programming</div><div class='badge'>(12)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Thoughts/" href="/categories/Thoughts/"
@@ -2834,7 +2854,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="用 Goroutine 处理任务一定会更快吗？[Ongoing]";
+  pdata.postTitle="用 Goroutine 处理任务一定会更快吗？";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2923,7 +2943,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- internal -->
 
-<script src="/js/app.js?time=1724082170079.js"></script>
+<script src="/js/app.js?time=1726666704579.js"></script>
 
 
 
@@ -3115,7 +3135,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
     </ul>
   </div>
-  <script>volantis.js('/js/plugins/rightMenu.js?time=1724082170079')</script>
+  <script>volantis.js('/js/plugins/rightMenu.js?time=1726666704579')</script>
 
 
 
@@ -3244,19 +3264,19 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
     
       const sites_api = document.getElementById('sites-api');
       if (sites_api != undefined && typeof SitesJS === 'undefined') {
-        volantis.js("/js/plugins/sites.js?time=1724082170079")
+        volantis.js("/js/plugins/sites.js?time=1726666704579")
       }
     
     
       const friends_api = document.getElementById('friends-api');
       if (friends_api != undefined && typeof FriendsJS === 'undefined') {
-        volantis.js("/js/plugins/friends.js?time=1724082170079")
+        volantis.js("/js/plugins/friends.js?time=1726666704579")
       }
     
     
       const contributors_api = document.getElementById('contributors-api');
       if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
-        volantis.js("/js/plugins/contributors.js?time=1724082170079")
+        volantis.js("/js/plugins/contributors.js?time=1726666704579")
       }
     
   };
@@ -3383,7 +3403,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
   function loadSearchScript() {
     // see: layout/_partial/scripts/_ctrl/cdnCtrl.ejs
-    return volantis.js("/js/search/hexo.js?time=1724082170079");
+    return volantis.js("/js/search/hexo.js?time=1726666704579");
   }
 
   function loadSearchService() {
@@ -3674,7 +3694,7 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/loop-with-goroutine/","name":"用 Goroutine 处理任务一定会更快吗？[Ongoing]"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"用 Goroutine 处理任务一定会更快吗？[Ongoing]","description":"标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个在循环中开启 Goroutine 常见的错误。","datePublished":"2024-08-15T13:27:20.000Z","dateModified":"2024-08-19T15:42:39.030Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/loop-with-goroutine/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/loop-with-goroutine/","wordCount":92,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"Sheep's Blog","url":"https://n1vk.github.io/","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://n1vk.github.io/","name":"Sheep's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://n1vk.github.io/categories/Programming/","name":"Programming"}},{"@type":"ListItem","position":3,"item":{"@id":"https://n1vk.github.io/Programming/loop-with-goroutine/","name":"用 Goroutine 处理任务一定会更快吗？"}}]},{"@context":"http://schema.org","@type":"BlogPosting","headline":"用 Goroutine 处理任务一定会更快吗？","description":"标题都这样写了，说明答案肯定是否定的。我想要探讨一下什么时候应该使用 Goroutine，什么时候没必要使用 Goroutine，以及一个并发多个 Goroutine 时常见的错误。","datePublished":"2024-08-15T13:27:20.000Z","dateModified":"2024-09-18T13:35:31.592Z","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://n1vk.github.io/Programming/loop-with-goroutine/"},"author":{"@type":"Person","name":"Yang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://n1vk.github.io/"},"publisher":{"@type":"Organization","name":"Sheep's Blog","logo":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://n1vk.github.io/Programming/loop-with-goroutine/","wordCount":91,"articleSection":"Programming","keywords":"Golang","image":{"@type":"ImageObject","url":"/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 <!-- more -->
